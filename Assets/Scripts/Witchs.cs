@@ -22,6 +22,7 @@ public class Witchs : MonoBehaviour
 
     private bool onReadyStatus = false;
     private Vector2 originPosition;
+    private GameObject GameController;
 
     // ¤k§Åª¬ºA
     private enum State
@@ -38,6 +39,8 @@ public class Witchs : MonoBehaviour
 
     void Awake()
     {
+        GameController = GameObject.Find("GameController");
+
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0;
@@ -199,6 +202,9 @@ public class Witchs : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Enemy":
+                Debug.Log(GameController.name);
+                GameController.SendMessage("increase_temperature", 10);
+                Destroy(gameObject);
                 break;
         }
     }

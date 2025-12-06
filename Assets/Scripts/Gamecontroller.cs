@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Gamecontrol : MonoBehaviour
+public class Gamecontroller : MonoBehaviour
 {
-    public int GameTime = 300;
+    public int GameTime = 180;
+    private int temperature = 25;
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +18,10 @@ public class Gamecontrol : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void increase_temperature(int degree)
+    {
+        Debug.Log("¤É·Å");
     }
 }
