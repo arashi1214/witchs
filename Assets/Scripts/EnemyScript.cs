@@ -41,6 +41,14 @@ public class EnemyScript : MonoBehaviour
             Debug.LogError("WayPoints 陣列未設定！");
             return;
         }
+        else{
+            for (int i =0; i<wayPoints.Length;i++){
+                Debug.Log("敵人定位點" + i);
+                Debug.Log(wayPoints[i].position);
+            }
+            Debug.Log("敵人初始位置");
+            Debug.Log(transform.position);
+        }
 
         // 隨機選擇第一個目標點
         targetIndex = Random.Range(0, wayPoints.Length);
@@ -53,7 +61,11 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(InitializeMovement());
     }
 
-    private void Update()
+    private void setWayPoints(){
+        
+    }
+
+    private void FixedUpdate()
     {
         if (isMoving)
         {
@@ -104,7 +116,7 @@ public class EnemyScript : MonoBehaviour
         targetIndex = Random.Range(0, wayPoints.Length); // 或隨機移動
         targetPoint = wayPoints[targetIndex];
 
-        Debug.Log("移動到下一個目標點：" + targetPoint.name);
+        Debug.Log("移動到下一個目標點：" + targetPoint.position);
         isMoving = true; // 重新啟動移動
     }
 

@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 751615759}
   m_Layer: 0
   m_Name: EnemysPosition (3)
-  m_TagString: Untagged
+  m_TagString: EnemyCreatePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -818,7 +818,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 28.94, y: 28.94}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1245,7 +1245,7 @@ GameObject:
   - component: {fileID: 1426628477}
   m_Layer: 0
   m_Name: EnemysPosition (2)
-  m_TagString: Untagged
+  m_TagString: EnemyCreatePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 1537186110}
   m_Layer: 0
   m_Name: EnemysPosition
-  m_TagString: Untagged
+  m_TagString: EnemyCreatePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 1878809835}
   m_Layer: 0
   m_Name: EnemysPosition (1)
-  m_TagString: Untagged
+  m_TagString: EnemyCreatePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
