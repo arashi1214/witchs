@@ -48,6 +48,8 @@ public class Witchs : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
+
+        originPosition = transform.position;
     }
 
 
@@ -82,7 +84,6 @@ public class Witchs : MonoBehaviour
         //確認是否有拉到彈弓處
         if (Input.GetMouseButtonUp(0))
         {
-            originPosition = transform.position;
 
             if (onReadyStatus)
             {
@@ -93,7 +94,7 @@ public class Witchs : MonoBehaviour
             }
             else
             {
-                transform.position = originPosition;
+                rb.MovePosition(originPosition);
             }
         }
     }
@@ -213,12 +214,18 @@ public class Witchs : MonoBehaviour
         }
     }
     
+    public void update_origin_position(Vector3 targetPosition)
+    {
+        originPosition = targetPosition;
+        Debug.Log("更新");
+    }
+
 
     IEnumerator WaitAndDoAction()
     {
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
-        transform.localScale = new Vector3(0.075f, 0.075f, 1);
+        transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(0.075f, 0.075f, 1), 0.1f * Time.deltaTime);
         print("可以投擲");
     }
 
