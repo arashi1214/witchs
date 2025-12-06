@@ -98,11 +98,6 @@ public class Witchs : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // 確認是否點選物體
-            if (Vector2.Distance(mousePos, transform.position) < 1f)
-            {
-                // 開始拖曳
-            }
         }
 
         if (Input.GetMouseButton(0))
@@ -202,6 +197,8 @@ public class Witchs : MonoBehaviour
         {
             case "Ground":
                 Destroy(gameObject);
+                break;
+            case "Enemy":
                 break;
         }
     }
