@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class Gamecontroller : MonoBehaviour
 {
-    [Header("遊戲設置")]
-    public int GameTime = 180;
-
     [Header("溫度計")]
     public Image mercury;
     public int minTemp = 0;
@@ -15,17 +12,43 @@ public class Gamecontroller : MonoBehaviour
 
     private int currentTemp = 25;
 
+    public GameObject PauseScene;
+    public bool isPausing;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PauseScene.SetActive(false);
+        isPausing = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPausing = !isPausing;
+        }
+
+        if (isPausing)
+        {
+            PauseScene.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            PauseScene.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void Continue()
+    {
+        PauseScene.SetActive(false);
+        Time.timeScale = 1;
+        isPausing = false;
     }
 
     public void increase_temperature(int degree)
