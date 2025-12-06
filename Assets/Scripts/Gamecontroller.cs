@@ -22,6 +22,6 @@ public class Gamecontroller : MonoBehaviour
 
     public void increase_temperature(int degree)
     {
-        Debug.Log("¤É·Å");
+        Debug.Log("¥Ø«e·Å«×" + temperature.ToString());
     }
 }

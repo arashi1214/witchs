@@ -16,6 +16,9 @@ public class Witchs : MonoBehaviour
     [Header("放置位置")]
     [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f); // 彈弓位置
 
+    [Header("女巫數值")]
+    [SerializeField] private int Act;
+
     private Rigidbody2D rb;
     private Vector2 startPosition;
     private Vector2 dragPosition;
@@ -203,7 +206,7 @@ public class Witchs : MonoBehaviour
                 break;
             case "Enemy":
                 Debug.Log(GameController.name);
-                GameController.SendMessage("increase_temperature", 10);
+                GameController.SendMessage("increase_temperature", Act);
                 Destroy(gameObject);
                 break;
         }
