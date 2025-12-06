@@ -27,6 +27,7 @@ public class Witchs : MonoBehaviour
     private enum State
     {
         FollowingMouse,  // 跟隨滑鼠
+        Fire, // 站到彈弓，燃燒中
         ReadyToLaunch,   // 準備發射
         Launched         // 已發射
     }
@@ -79,7 +80,8 @@ public class Witchs : MonoBehaviour
             if (onReadyStatus)
             {
                 transform.position = launchPosition;
-                currentState = State.ReadyToLaunch;
+                currentState = State.Fire;
+                playAnimation();
                 Debug.Log("已到指定位置");
             }
             else
@@ -202,5 +204,18 @@ public class Witchs : MonoBehaviour
                 Destroy(gameObject);
                 break;
         }
+    }
+
+    IEnumerator WaitAndDoAction()
+    {
+        yield return new WaitForSeconds(2f);
+        currentState = State.ReadyToLaunch;
+        print("可以投擲");
+    }
+
+    private void playAnimation()
+    {
+
+        StartCoroutine(WaitAndDoAction());
     }
 }
