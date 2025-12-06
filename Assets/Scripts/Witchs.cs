@@ -90,7 +90,7 @@ public class Witchs : MonoBehaviour
         }
     }
 
-    void ShowTrajectory(Vector2 a)
+    void ShowTrajectory(Vector2 velocity)
     {
         Vector2 position = transform.position;
 
