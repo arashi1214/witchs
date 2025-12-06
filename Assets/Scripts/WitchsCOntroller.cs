@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WitchsCOntroller : MonoBehaviour
+public class WitchsController : MonoBehaviour
 {
     [Header("女巫產生器")]
     [SerializeField] private GameObject[] Witchs;
