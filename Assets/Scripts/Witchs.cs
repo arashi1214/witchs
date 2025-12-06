@@ -200,24 +200,27 @@ public class Witchs : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (collision.gameObject.tag)
+        if (currentState == State.Launched)
         {
-            case "Ground":
-                Destroy(gameObject);
-                GameController.SendMessage("onward", gameObject);
-                break;
-            case "Enemy":
-                GameController.SendMessage("increase_temperature", Act);
-                GameController.SendMessage("onward", gameObject);
-                Destroy(gameObject);
-                break;
+            switch (collision.gameObject.tag)
+            {
+                case "Ground":
+                    Destroy(gameObject);
+                    GameController.SendMessage("onward", gameObject);
+                    break;
+                case "Enemy":
+                    GameController.SendMessage("increase_temperature", Act);
+                    GameController.SendMessage("onward", gameObject);
+                    Destroy(gameObject);
+                    break;
+            }
         }
+
     }
     
     public void update_origin_position(Vector3 targetPosition)
     {
         originPosition = targetPosition;
-        Debug.Log("更新");
     }
 
 
@@ -225,7 +228,7 @@ public class Witchs : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
-        transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(0.075f, 0.075f, 1), 0.1f * Time.deltaTime);
+        transform.localScale = new Vector3(0.075f, 0.075f, 1);
         print("可以投擲");
     }
 
