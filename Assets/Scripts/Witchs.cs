@@ -13,45 +13,97 @@ public class Witchs : MonoBehaviour
     [SerializeField] private int trajectoryPointCount = 30;
     [SerializeField] private float trajectoryTimeStep = 0.1f;
 
+    [Header("放置位置")]
+    [SerializeField] private Vector2 launchPosition = new Vector2(-8f, 3f); // 彈弓位置
+    [SerializeField] private float snapDistance = 0.5f; // 吸附距離
+
     private Rigidbody2D rb;
     private Vector2 startPosition;
     private Vector2 dragPosition;
-    private bool isDragging = false;
-    private bool isLaunched = false;
+
+    // 女巫狀態
+    private enum State
+    {
+        FollowingMouse,  // 跟隨滑鼠
+        ReadyToLaunch,   // 準備發射(在彈弓位置)
+        Launched         // 已發射
+    }
+
+    private State currentState = State.FollowingMouse;
 
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true; // 發射前保持靜止
-        startPosition = transform.position;
-
-        if (trajectoryLine)
-        {
-            trajectoryLine.positionCount = trajectoryPointCount;
-            trajectoryLine.enabled = false;
-        }
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (isLaunched) return;
+        switch (currentState)
+        {
+            case State.FollowingMouse:
+                HandleFollowingMouse();
+                break;
 
+            case State.ReadyToLaunch:
+                HandleReadyToLaunch();
+                break;
+
+            case State.Launched:
+                break;
+        }
+    }
+    
+    void HandleFollowingMouse()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = mousePos;
+        }
+
+        //確認是否有拉到彈弓處
+        if (Input.GetMouseButtonUp(0))
+        {
+            float distanceToLaunchPos = Vector2.Distance(transform.position, launchPosition);
+
+            if (distanceToLaunchPos <= snapDistance)
+            {
+                transform.position = launchPosition;
+                currentState = State.ReadyToLaunch;
+                Debug.Log("已到指定位置");
+            }
+            else
+            {
+                Debug.Log("需放到指定位置");
+            }
+        }
+    }
+
+ 
+    void HandleReadyToLaunch()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // 確認是否點選物體
             if (Vector2.Distance(mousePos, transform.position) < 1f)
             {
-                isDragging = true;
+                // 開始拖曳
             }
         }
 
-        if (Input.GetMouseButton(0) && isDragging)
+        if (Input.GetMouseButton(0))
         {
             dragPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = startPosition - dragPosition;
+            Vector2 direction = launchPosition - dragPosition;
 
             // 限制拖曳距離
             if (direction.magnitude > maxDragDistance)
@@ -59,7 +111,7 @@ public class Witchs : MonoBehaviour
                 direction = direction.normalized * maxDragDistance;
             }
 
-            transform.position = startPosition - direction;
+            transform.position = launchPosition - direction;
 
             // 顯示軌跡
             if (trajectoryLine)
@@ -69,7 +121,7 @@ public class Witchs : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && isDragging)
+        if (Input.GetMouseButtonUp(0))
         {
             Launch();
         }
@@ -77,12 +129,10 @@ public class Witchs : MonoBehaviour
 
     void Launch()
     {
-        isDragging = false;
-        isLaunched = true;
+        currentState = State.Launched;
 
-        Vector2 launchForce = (startPosition - (Vector2)transform.position) * forceMultiplier;
+        Vector2 launchForce = (launchPosition - (Vector2)transform.position) * forceMultiplier;
 
-        rb.isKinematic = false;
         rb.gravityScale = 1;
         rb.AddForce(launchForce, ForceMode2D.Impulse);
 
@@ -90,11 +140,13 @@ public class Witchs : MonoBehaviour
         {
             trajectoryLine.enabled = false;
         }
+
+        Debug.Log("投擲");
     }
 
     void ShowTrajectory(Vector2 velocity)
     {
-        Vector2 position = transform.position;
+        Vector2 position = launchPosition;
 
         for (int i = 0; i < trajectoryPointCount; i++)
         {
@@ -104,18 +156,14 @@ public class Witchs : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(collision.gameObject.tag)
+        switch (collision.gameObject.tag)
         {
             case "Ground":
-                Out();
+                Destroy(gameObject);
                 break;
         }
-    }
-
-    void Out()
-    {
-        Destroy(gameObject);
     }
 }
