@@ -66,6 +66,7 @@ public class EnemyScript : MonoBehaviour
     /// </summary>
     public void Move()
     {
+ 
         // 計算朝向目標點的方向
         Vector2 direction = targetPoint.position - transform.position;
         // 正規化方向向量並乘以速度

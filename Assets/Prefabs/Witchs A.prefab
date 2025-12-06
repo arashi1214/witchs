@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8213350457110886714}
   - component: {fileID: 8819778279465724058}
   - component: {fileID: 355298081662838025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Witchs A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

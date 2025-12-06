@@ -93,4 +93,9 @@ public class Gamecontroller : MonoBehaviour
         mercury.fillAmount = Mathf.Lerp(mercury.fillAmount, fillRatio, Time.deltaTime * 1f);
     }
 
+    public void gameOver()
+    {
+        Debug.Log("Game finsh");
+    }
+
 }
