@@ -102,4 +102,15 @@ public class Witchs : MonoBehaviour
             trajectoryLine.SetPosition(i, point);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Test");
+        print(other);
+    }
+
+    void Out()
+    {
+        Destroy(gameObject);
+    }
 }
