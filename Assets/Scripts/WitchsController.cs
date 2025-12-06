@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WitchsController : MonoBehaviour
 {
-    [Header("¤k§Å²£¥Í¾¹")]
+    [Header("å¥³å·«ç”Ÿæˆè³‡è¨Š")]
     [SerializeField] private GameObject[] Witchs;
     [SerializeField] private int standbyNumber;
     [SerializeField] private Transform CreatePoint;
@@ -14,14 +14,14 @@ public class WitchsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cerate();
+        cerate(standbyNumber);
     }
 
-    void cerate()
+    void cerate(int number)
     {
         Vector2 create_position = CreatePoint.position;
 
-        for (int i = 0; i < standbyNumber; i++)
+        for (int i = 0; i < number; i++)
         {
             int random_witch = Random.Range(0, Witchs.Length);
             // print(Witchs[random_witch]);
@@ -34,7 +34,7 @@ public class WitchsController : MonoBehaviour
 
     public void onward(GameObject remove_witch)
     {
-        Debug.Log("«e¶i");
+        Debug.Log("å‰é€²");
         WitchList.Remove(remove_witch);
 
         for (int i = 0; i < WitchList.Count; i++)
@@ -44,7 +44,7 @@ public class WitchsController : MonoBehaviour
             if (rb != null)
             {
 
-                Vector3 targetPosition = rb.position; // ¨Ï¥Î rb.position Àò¨úª«²z¦ì¸m
+                Vector3 targetPosition = rb.position; // ï¿½Ï¥ï¿½ rb.position ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½m
 
                 targetPosition.x += 2;
 

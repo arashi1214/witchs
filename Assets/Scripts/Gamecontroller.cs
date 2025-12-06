@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Gamecontroller : MonoBehaviour
 {
-    [Header("·Å«×­p")]
+    [Header("ï¿½Å«×­p")]
     public Image mercury;
     public int minTemp = 0;
     public int maxTemp = 1000;
 
     private int currentTemp = 25;
 
-    // ¼È°±
+    // ï¿½È°ï¿½
     public GameObject PauseScene;
     public bool isPausing;
 
     public GameObject EndScene;
 
-    // ·Å«×­pªº­p®É¾¹
+    // ï¿½Å«×­pï¿½ï¿½ï¿½pï¿½É¾ï¿½
     private float timer = 0f;
     private float repeatInterval = 3.0f;
 
@@ -35,7 +35,7 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ©w®É·Å«×¤U­°
+        //å®šæœŸé™æº«
         timer += Time.deltaTime;
         if (timer > repeatInterval)
         {
@@ -44,18 +44,17 @@ public class Gamecontroller : MonoBehaviour
                 currentTemp -= 1;
                 UpdateThermometerVisual(currentTemp);
                 timer -= repeatInterval;
-                //Debug.Log("·Å«×¤U­°" + currentTemp);
             }
         }
 
 
-        // ·Å«×¹F¨ì³Ì°ªÂI
+        // æº«åº¦é”åˆ°æœ€é«˜
         if (currentTemp >= maxTemp)
         {
-            Debug.Log("¹CÀ¸µ²§ô");
+            Debug.Log("éŠæˆ²çµæŸ");
         }
 
-        // ¼È°±µe­±
+        // æš«åœæŒ‰éˆ•
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPausing = !isPausing;
@@ -84,7 +83,7 @@ public class Gamecontroller : MonoBehaviour
     {
         currentTemp += degree;
         UpdateThermometerVisual(currentTemp);
-        Debug.Log("¥Ø«e·Å«×" + currentTemp.ToString());
+        Debug.Log("ï¿½Ø«eï¿½Å«ï¿½" + currentTemp.ToString());
     }
         
     void UpdateThermometerVisual(int newTemp)
