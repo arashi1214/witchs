@@ -83,6 +83,7 @@ public class Witchs : MonoBehaviour
         Vector2 launchForce = (startPosition - (Vector2)transform.position) * forceMultiplier;
 
         rb.isKinematic = false;
+        rb.gravityScale = 1;
         rb.AddForce(launchForce, ForceMode2D.Impulse);
 
         if (trajectoryLine)
@@ -103,10 +104,14 @@ public class Witchs : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Test");
-        print(other);
+        switch(collision.gameObject.tag)
+        {
+            case "Ground":
+                Out();
+                break;
+        }
     }
 
     void Out()

@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 395932483}
   m_Layer: 0
   m_Name: Out
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Witchs:
   - {fileID: 5157310228923578617, guid: 2d65009070eef1742bb0f0a8956c1505, type: 3}
-  - {fileID: 5157310228923578617, guid: 604592c663f120d48a304cb3116461a2, type: 3}
+  - {fileID: 5157310228923578617, guid: 59c6ad810c85deb47927fbd7d1202377, type: 3}
   standbyNumber: 10
   CreatePoint: {fileID: 213156410}
 --- !u!4 &1221889665
