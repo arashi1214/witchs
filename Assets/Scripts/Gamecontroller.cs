@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Gamecontrol : MonoBehaviour
 {
+    public int GameTime = 300;
+
     // Start is called before the first frame update
     void Start()
     {
