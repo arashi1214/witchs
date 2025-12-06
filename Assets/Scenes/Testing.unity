@@ -261,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213156409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.18, y: -11.42, z: 0}
+  m_LocalPosition: {x: -4.18, y: -10.623, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395932480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.279999, y: -12.33, z: 0}
+  m_LocalPosition: {x: 4.279999, y: -15.44, z: 0}
   m_LocalScale: {x: 47.602024, y: 1.2230526, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.25
+  m_FillAmount: 0.025
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1246,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5169875351401450262, guid: 64e5a8ca735fd42dda923f8fa4247de5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -9
+      value: -377
       objectReference: {fileID: 0}
     - target: {fileID: 5169875351401450262, guid: 64e5a8ca735fd42dda923f8fa4247de5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1267,6 +1267,10 @@ PrefabInstance:
     - target: {fileID: 5169875351401450263, guid: 64e5a8ca735fd42dda923f8fa4247de5, type: 3}
       propertyPath: m_Name
       value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169875351401450263, guid: 64e5a8ca735fd42dda923f8fa4247de5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5169875352048783790, guid: 64e5a8ca735fd42dda923f8fa4247de5, type: 3}
       propertyPath: m_AnchorMax.y

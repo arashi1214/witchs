@@ -28,7 +28,7 @@ public class WitchsController : MonoBehaviour
 
             GameObject newWitch = Instantiate(Witchs[random_witch], create_position, CreatePoint.rotation, CreatePoint);
             WitchList.Add(newWitch);
-            create_position.x -= 1;
+            create_position.x -= 2;
         }
     }
 
@@ -46,7 +46,7 @@ public class WitchsController : MonoBehaviour
 
                 Vector3 targetPosition = rb.position; // 使用 rb.position 獲取物理位置
 
-                targetPosition.x += 1;
+                targetPosition.x += 2;
 
                 rb.MovePosition(targetPosition);
 
