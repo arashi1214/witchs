@@ -211,6 +211,7 @@ public class Witchs : MonoBehaviour
                 case "Enemy":
                     GameController.SendMessage("increase_temperature", Act);
                     GameController.SendMessage("onward", gameObject);
+                    GameController.SendMessage("CreateEnemys");
                     Destroy(gameObject);
                     Destroy(collision.gameObject);
                     break;

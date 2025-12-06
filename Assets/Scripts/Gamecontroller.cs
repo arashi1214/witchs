@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Gamecontroller : MonoBehaviour
 {
-    [Header("�ū׭p")]
+    [Header("溫度計")]
     public Image mercury;
     public int minTemp = 0;
     public int maxTemp = 1000;
@@ -18,10 +18,12 @@ public class Gamecontroller : MonoBehaviour
 
     public GameObject EndScene;
 
-    // �ū׭p���p�ɾ�
+    // 溫度下降
     private float timer = 0f;
     private float repeatInterval = 3.0f;
 
+    //敵人
+    public GameObject Enemys;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class Gamecontroller : MonoBehaviour
         PauseScene.SetActive(false);
         isPausing = false;
         UpdateThermometerVisual(currentTemp);
+        CreateEnemys();
 
     }
 
@@ -90,6 +93,11 @@ public class Gamecontroller : MonoBehaviour
     {
         float fillRatio = Mathf.InverseLerp(minTemp, maxTemp, newTemp);
         mercury.fillAmount = Mathf.Lerp(mercury.fillAmount, fillRatio, Time.deltaTime * 1f);
+    }
+
+    void CreateEnemys(){
+        var groups = GameObject.Find("EnemysCreatePoint");
+        Instantiate(Enemys, groups.transform);
     }
 
     public void gameOver()
