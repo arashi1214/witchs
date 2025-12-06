@@ -35,6 +35,7 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 定時溫度下降
         timer += Time.deltaTime;
         if (timer > repeatInterval)
         {
@@ -48,6 +49,13 @@ public class Gamecontroller : MonoBehaviour
         }
 
 
+        // 溫度達到最高點
+        if (currentTemp >= maxTemp)
+        {
+            Debug.Log("遊戲結束");
+        }
+
+        // 暫停畫面
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPausing = !isPausing;

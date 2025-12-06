@@ -48,6 +48,8 @@ public class Witchs : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
+
+        originPosition = transform.position;
     }
 
 
@@ -82,7 +84,6 @@ public class Witchs : MonoBehaviour
         //確認是否有拉到彈弓處
         if (Input.GetMouseButtonUp(0))
         {
-            originPosition = transform.position;
 
             if (onReadyStatus)
             {
@@ -93,7 +94,7 @@ public class Witchs : MonoBehaviour
             }
             else
             {
-                transform.position = originPosition;
+                rb.MovePosition(originPosition);
             }
         }
     }
@@ -199,20 +200,29 @@ public class Witchs : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (collision.gameObject.tag)
+        if (currentState == State.Launched)
         {
-            case "Ground":
-                Destroy(gameObject);
-                GameController.SendMessage("onward", gameObject);
-                break;
-            case "Enemy":
-                GameController.SendMessage("increase_temperature", Act);
-                GameController.SendMessage("onward", gameObject);
-                Destroy(gameObject);
-                break;
+            switch (collision.gameObject.tag)
+            {
+                case "Ground":
+                    Destroy(gameObject);
+                    GameController.SendMessage("onward", gameObject);
+                    break;
+                case "Enemy":
+                    GameController.SendMessage("increase_temperature", Act);
+                    GameController.SendMessage("onward", gameObject);
+                    Destroy(gameObject);
+                    break;
+            }
         }
+
     }
     
+    public void update_origin_position(Vector3 targetPosition)
+    {
+        originPosition = targetPosition;
+    }
+
 
     IEnumerator WaitAndDoAction()
     {

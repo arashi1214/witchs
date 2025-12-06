@@ -34,7 +34,7 @@ public class WitchsController : MonoBehaviour
 
     public void onward(GameObject remove_witch)
     {
-        Debug.Log("前進 (物理)");
+        Debug.Log("前進");
         WitchList.Remove(remove_witch);
 
         for (int i = 0; i < WitchList.Count; i++)
@@ -49,6 +49,8 @@ public class WitchsController : MonoBehaviour
                 targetPosition.x += 2;
 
                 rb.MovePosition(targetPosition);
+
+                WitchList[i].SendMessage("update_origin_position", targetPosition);
 
             }
             else
