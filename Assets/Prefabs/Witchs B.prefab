@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDragDistance: 1.5
-  forceMultiplier: 8
+  forceMultiplier: 13
   trajectoryLine: {fileID: 0}
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1
@@ -154,6 +154,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6836548, y: 4.9995894}
-  m_Size: {x: 15.370483, y: 18.940828}
+  m_Offset: {x: -0.98876953, y: 4.9995894}
+  m_Size: {x: 10.737305, y: 18.940828}
   m_Direction: 0

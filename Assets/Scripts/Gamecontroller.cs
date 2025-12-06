@@ -16,6 +16,8 @@ public class Gamecontroller : MonoBehaviour
     public GameObject PauseScene;
     public bool isPausing;
 
+    public GameObject EndScene;
+
     // 溫度計的計時器
     private float timer = 0f;
     private float repeatInterval = 3.0f;
@@ -41,7 +43,7 @@ public class Gamecontroller : MonoBehaviour
                 currentTemp -= 1;
                 UpdateThermometerVisual(currentTemp);
                 timer -= repeatInterval;
-                Debug.Log("溫度下降" + currentTemp);
+                //Debug.Log("溫度下降" + currentTemp);
             }
         }
 

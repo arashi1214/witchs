@@ -219,6 +219,7 @@ public class Witchs : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
+        transform.localScale = new Vector3(0.075f, 0.075f, 1);
         print("¥i¥H§ëÂY");
     }
 

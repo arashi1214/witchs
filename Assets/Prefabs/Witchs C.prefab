@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDragDistance: 1.5
-  forceMultiplier: 8
+  forceMultiplier: 10
   trajectoryLine: {fileID: 0}
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1
@@ -146,7 +146,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2aaf4e2890365be4abc452ca90ca0348, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 978bc452cb1a40c4bba29db1218bc72c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
