@@ -14,12 +14,14 @@ public class Witchs : MonoBehaviour
     [SerializeField] private float trajectoryTimeStep = 0.1f;
 
     [Header("放置位置")]
-    [SerializeField] private Vector2 launchPosition = new Vector2(-8f, 3f); // 彈弓位置
+    [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f); // 彈弓位置
     [SerializeField] private float snapDistance = 0.5f; // 吸附距離
 
     private Rigidbody2D rb;
     private Vector2 startPosition;
     private Vector2 dragPosition;
+
+    private bool onReadyStatus = false;
 
     // 女巫狀態
     private enum State
@@ -62,8 +64,9 @@ public class Witchs : MonoBehaviour
     
     void HandleFollowingMouse()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && checkMouseClick())
         {
+            
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePos;
         }
@@ -71,9 +74,7 @@ public class Witchs : MonoBehaviour
         //確認是否有拉到彈弓處
         if (Input.GetMouseButtonUp(0))
         {
-            float distanceToLaunchPos = Vector2.Distance(transform.position, launchPosition);
-
-            if (distanceToLaunchPos <= snapDistance)
+            if (onReadyStatus)
             {
                 transform.position = launchPosition;
                 currentState = State.ReadyToLaunch;
@@ -81,7 +82,7 @@ public class Witchs : MonoBehaviour
             }
             else
             {
-                Debug.Log("需放到指定位置");
+                //Debug.Log("需放到指定位置");
             }
         }
     }
@@ -156,6 +157,40 @@ public class Witchs : MonoBehaviour
         }
     }
 
+
+    bool checkMouseClick()
+    {
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        float distance = 0.001f;
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, distance);
+
+        if (hit.collider != null)
+        {
+            GameObject clickedObject = hit.collider.gameObject;
+            //Debug.Log("你點擊了 2D 物件: " + clickedObject.name);
+
+            if (clickedObject == gameObject)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.name == "Slingshot")
+        {
+            onReadyStatus = true;
+            Debug.Log("到達位置");
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

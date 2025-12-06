@@ -13,9 +13,14 @@ public class WitchsCOntroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cerate();
+    }
+
+    void cerate()
+    {
         Vector2 create_position = CreatePoint.position;
 
-        for (int i=0; i< standbyNumber; i++)
+        for (int i = 0; i < standbyNumber; i++)
         {
             int random_witch = Random.Range(0, Witchs.Length);
             // print(Witchs[random_witch]);
