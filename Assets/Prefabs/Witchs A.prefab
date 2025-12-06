@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 5157310228923578617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   trajectoryLine: {fileID: 0}
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1
-  launchPosition: {x: -6, y: -3}
+  launchPosition: {x: -5, y: -5}
   Act: 50
 --- !u!222 &8213350457110886714
 CanvasRenderer:

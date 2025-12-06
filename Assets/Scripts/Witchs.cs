@@ -42,12 +42,12 @@ public class Witchs : MonoBehaviour
     void Awake()
     {
         GameController = GameObject.Find("GameController");
+        launchPosition = GameObject.Find("Slingshot").transform.position;
 
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
-
     }
 
 
@@ -71,7 +71,6 @@ public class Witchs : MonoBehaviour
     
     void HandleFollowingMouse()
     {
-        originPosition = transform.position;
 
         if (Input.GetMouseButton(0) && checkMouseClick())
         {
@@ -83,6 +82,8 @@ public class Witchs : MonoBehaviour
         //確認是否有拉到彈弓處
         if (Input.GetMouseButtonUp(0))
         {
+            originPosition = transform.position;
+
             if (onReadyStatus)
             {
                 transform.position = launchPosition;
@@ -202,15 +203,17 @@ public class Witchs : MonoBehaviour
         {
             case "Ground":
                 Destroy(gameObject);
-                GameController.SendMessage("onward");
+                GameController.SendMessage("onward", gameObject);
                 break;
             case "Enemy":
                 GameController.SendMessage("increase_temperature", Act);
-                GameController.SendMessage("onward");
+                GameController.SendMessage("onward", gameObject);
                 Destroy(gameObject);
                 break;
         }
     }
+
+    
 
     IEnumerator WaitAndDoAction()
     {

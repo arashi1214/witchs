@@ -28,28 +28,28 @@ public class WitchsController : MonoBehaviour
 
             GameObject newWitch = Instantiate(Witchs[random_witch], create_position, CreatePoint.rotation, CreatePoint);
             WitchList.Add(newWitch);
-            create_position.x -= 2;
+            create_position.x -= 1;
         }
     }
 
-    public void onward()
+    public void onward(GameObject remove_witch)
     {
         Debug.Log("前進 (物理)");
+        WitchList.Remove(remove_witch);
 
         for (int i = 0; i < WitchList.Count; i++)
         {
-            // 1. 取得 Rigidbody 元件
             Rigidbody2D rb = WitchList[i].GetComponent<Rigidbody2D>();
 
             if (rb != null)
             {
-                // 2. 計算目標位置
-                Vector3 targetPosition = rb.position; // 使用 rb.position 獲取物理位置
-                targetPosition.x += 2;
 
-                // 3. 使用 MovePosition 函式告訴物理引擎移動
+                Vector3 targetPosition = rb.position; // 使用 rb.position 獲取物理位置
+
+                targetPosition.x += 1;
+
                 rb.MovePosition(targetPosition);
-                Debug.Log("新物理位置: " + targetPosition);
+
             }
             else
             {
