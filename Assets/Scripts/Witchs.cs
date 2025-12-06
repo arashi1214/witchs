@@ -39,7 +39,6 @@ public class Witchs : MonoBehaviour
     private State currentState = State.FollowingMouse;
 
 
-
     void Awake()
     {
         GameController = GameObject.Find("GameController");
@@ -49,7 +48,6 @@ public class Witchs : MonoBehaviour
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
 
-        originPosition = transform.position;
     }
 
 
@@ -73,6 +71,8 @@ public class Witchs : MonoBehaviour
     
     void HandleFollowingMouse()
     {
+        originPosition = transform.position;
+
         if (Input.GetMouseButton(0) && checkMouseClick())
         {
             
@@ -173,7 +173,6 @@ public class Witchs : MonoBehaviour
         if (hit.collider != null)
         {
             GameObject clickedObject = hit.collider.gameObject;
-            //Debug.Log("你點擊了 2D 物件: " + clickedObject.name);
 
             if (clickedObject == gameObject)
             {
@@ -203,10 +202,11 @@ public class Witchs : MonoBehaviour
         {
             case "Ground":
                 Destroy(gameObject);
+                GameController.SendMessage("onward");
                 break;
             case "Enemy":
-                Debug.Log(GameController.name);
                 GameController.SendMessage("increase_temperature", Act);
+                GameController.SendMessage("onward");
                 Destroy(gameObject);
                 break;
         }

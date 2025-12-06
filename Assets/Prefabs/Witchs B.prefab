@@ -96,7 +96,7 @@ MonoBehaviour:
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1
   launchPosition: {x: -6, y: -3}
-  Act: 50
+  Act: 100
 --- !u!222 &8213350457110886714
 CanvasRenderer:
   m_ObjectHideFlags: 0
