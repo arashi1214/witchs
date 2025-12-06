@@ -15,19 +15,19 @@ public class Witchs : MonoBehaviour
 
     [Header("放置位置")]
     [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f); // 彈弓位置
-    [SerializeField] private float snapDistance = 0.5f; // 吸附距離
 
     private Rigidbody2D rb;
     private Vector2 startPosition;
     private Vector2 dragPosition;
 
     private bool onReadyStatus = false;
+    private Vector2 originPosition;
 
     // 女巫狀態
     private enum State
     {
         FollowingMouse,  // 跟隨滑鼠
-        ReadyToLaunch,   // 準備發射(在彈弓位置)
+        ReadyToLaunch,   // 準備發射
         Launched         // 已發射
     }
 
@@ -41,6 +41,8 @@ public class Witchs : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
+
+        originPosition = transform.position;
     }
 
 
@@ -82,7 +84,7 @@ public class Witchs : MonoBehaviour
             }
             else
             {
-                //Debug.Log("需放到指定位置");
+                transform.position = originPosition;
             }
         }
     }
