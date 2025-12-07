@@ -18,6 +18,8 @@ public class PropMoving : MonoBehaviour
     private Vector3 initialPosition;      // 角色初始位置
     private bool isShaking = false;
 
+    public AudioSource[] popeAudios;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,8 @@ public class PropMoving : MonoBehaviour
         {
             // 可以在這裡處理血量減少、音效等
             StartCoroutine(HitShakeCoroutine());
+
+            popeAudios[Random.Range(0, popeAudios.Length)].Play();
         }
     }
 
