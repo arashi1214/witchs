@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Witchs : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class Witchs : MonoBehaviour
     private List<Collider2D> childColliders = new List<Collider2D>();
     private bool isRagdollActive = false;
 
+    public event Action<bool> onLaunching;
 
     private enum State
     {
@@ -229,6 +231,10 @@ public class Witchs : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             Launch();
+            if(LaunchingAudioManager.Instance != null)
+            {
+                LaunchingAudioManager.Instance.TriggerLaunchAudioSignal();
+            }
         }
     }
 
@@ -245,7 +251,7 @@ public class Witchs : MonoBehaviour
 
         EnableRagdoll();
 
-        int randeffect = Random.Range(0, scream.Length);
+        int randeffect = UnityEngine.Random.Range(0, scream.Length);
         playEffects(scream[randeffect]);
 
         if (fireTrailRenderer != null)
