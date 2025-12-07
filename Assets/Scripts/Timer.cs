@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         currentTime -= Time.deltaTime;
         UpdateThermometerVisual();
     
-        if(currentTime == 0)
+        if(currentTime <= 0)
         {
             Debug.Log("GameOver");
             GameController.SendMessage("gameOver");
