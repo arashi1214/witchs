@@ -39,4 +39,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         isPausing = false;
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void BacktoMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
