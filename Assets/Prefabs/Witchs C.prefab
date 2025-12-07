@@ -689,7 +689,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 2.493225, y: 2.7198772}
-  m_ConnectedAnchor: {x: 8.59314, y: 1.6693115}
+  m_ConnectedAnchor: {x: 8.59314, y: 1.6696167}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -713,7 +713,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -4.8730965, y: 2.039906}
-  m_ConnectedAnchor: {x: -9.852905, y: 0.70983887}
+  m_ConnectedAnchor: {x: -9.852905, y: 0.7095337}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -737,7 +737,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -1.019947, y: -6.573031}
-  m_ConnectedAnchor: {x: 0.8300781, y: 2.7471924}
+  m_ConnectedAnchor: {x: 0.8300781, y: 2.746582}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -761,7 +761,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 1.92659, y: -6.233046}
-  m_ConnectedAnchor: {x: -1.2329102, y: 2.456665}
+  m_ConnectedAnchor: {x: -1.2335205, y: 2.4569702}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1027,9 +1027,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7776283253738420847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -0.6, z: 0}
-  m_LocalScale: {x: 13.0204, y: 18.223999, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.1, y: 1.08, z: 0}
+  m_LocalScale: {x: 22.7, y: 25.114895, z: 1.2074469}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5792201699125622020}
   m_RootOrder: 4
@@ -1075,7 +1075,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 512595465, guid: ef751638d7cbb0641b542c1da5bd4b3e, type: 3}
+  m_Sprite: {fileID: -269916559, guid: 2d9703292129140599ff007668c681cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1088,7 +1088,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5563124879011244663
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1096,7 +1096,7 @@ Animator:
   m_GameObject: {fileID: 7776283253738420847}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 075d940a7820b5f4fb78b2057625a0de, type: 2}
+  m_Controller: {fileID: 9100000, guid: 824af902de1894eb0973b12648285b66, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1105,4 +1105,5 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
