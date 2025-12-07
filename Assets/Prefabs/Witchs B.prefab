@@ -439,7 +439,7 @@ MonoBehaviour:
   fireTrailRenderer: {fileID: 3979992075097635788}
   fire: {fileID: 4847767592561131168}
   launchPosition: {x: -5, y: -5}
-  Act: 100
+  Act: 20
 --- !u!222 &8213350457110886714
 CanvasRenderer:
   m_ObjectHideFlags: 0

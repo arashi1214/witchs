@@ -8,11 +8,13 @@ public class Gamecontroller : MonoBehaviour
     [Header("溫度計")]
     public Image mercury;
     public int minTemp = 0;
-    public int maxTemp = 1000;
+    public int maxTemp = 100;
+    public GameObject BuildFire;
 
     private int currentTemp = 25;
 
-    // �Ȱ�
+    [Header("UI")]
+    // 暫停畫面
     public GameObject PauseScene;
     public bool isPausing;
 
@@ -52,7 +54,11 @@ public class Gamecontroller : MonoBehaviour
 
 
         // 溫度達到最高
-        if (currentTemp >= maxTemp)
+        if (currentTemp >= maxTemp / 3 * 2)
+        {
+            BuildFire.active = true;
+        }
+        else if (currentTemp >= maxTemp)
         {
             Debug.Log("遊戲結束");
         }
@@ -86,13 +92,12 @@ public class Gamecontroller : MonoBehaviour
     {
         currentTemp += degree;
         UpdateThermometerVisual(currentTemp);
-        //Debug.Log("溫度升高" + currentTemp.ToString());
     }
         
     void UpdateThermometerVisual(int newTemp)
     {
         float fillRatio = Mathf.InverseLerp(minTemp, maxTemp, newTemp);
-        mercury.fillAmount = Mathf.Lerp(mercury.fillAmount, fillRatio, Time.deltaTime * 1f);
+        mercury.fillAmount = fillRatio;
     }
 
     void CreateEnemys(){

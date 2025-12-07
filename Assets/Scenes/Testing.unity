@@ -1069,7 +1069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1021077612263535148, guid: 7295e6c4dba8ffe458708dba32bddf9b, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1021077612263535148, guid: 7295e6c4dba8ffe458708dba32bddf9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1172,7 +1172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mercury: {fileID: 1786780463}
   minTemp: 0
-  maxTemp: 1000
+  maxTemp: 100
+  BuildFire: {fileID: 0}
   PauseScene: {fileID: 891748636}
   isPausing: 0
   EndScene: {fileID: 0}
@@ -1480,7 +1481,7 @@ Transform:
   m_Children:
   - {fileID: 213160243}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426628475
 GameObject:
@@ -1801,7 +1802,7 @@ RectTransform:
   m_Children:
   - {fileID: 115408844}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
