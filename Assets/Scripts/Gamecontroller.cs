@@ -64,24 +64,21 @@ public class Gamecontroller : MonoBehaviour
         }
         else if (currentTemp >= 75)
         {
-            BuildFire[0].SetActive(true);
+            BuildFire[0].SetActive(false);
             BuildFire[1].SetActive(false);
-            BuildFire[2].SetActive(false);
-            BuildFire[3].SetActive(true);
+            BuildFire[2].SetActive(true);
         }
         else if (currentTemp >= 50 && currentTemp < 75)
         {
-            BuildFire[0].SetActive(true);
-            BuildFire[1].SetActive(false);
-            BuildFire[2].SetActive(true);
-            BuildFire[3].SetActive(false);
+            BuildFire[0].SetActive(false);
+            BuildFire[1].SetActive(true);
+            BuildFire[2].SetActive(false);
         }
         else if (currentTemp >= 30 && currentTemp < 50)
         {
             BuildFire[0].SetActive(true);
-            BuildFire[1].SetActive(true);
+            BuildFire[1].SetActive(false);
             BuildFire[2].SetActive(false);
-            BuildFire[3].SetActive(false);
         }
 
         else
@@ -89,7 +86,6 @@ public class Gamecontroller : MonoBehaviour
             BuildFire[0].SetActive(false);
             BuildFire[1].SetActive(false);
             BuildFire[2].SetActive(false);
-            BuildFire[3].SetActive(false);
         }
 
         // 暫停按鈕
@@ -150,7 +146,7 @@ public class Gamecontroller : MonoBehaviour
             //witchRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
 
             // 選項 B: 只在遮罩範圍外顯示
-            witchRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask; 
+           // witchRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask; 
         }
 
         Debug.Log("敵人生成");

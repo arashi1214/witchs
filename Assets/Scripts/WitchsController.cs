@@ -44,13 +44,20 @@ public class WitchsController : MonoBehaviour
             if (rb != null)
             {
 
-                Vector3 targetPosition = rb.position; // �ϥ� rb.position ������z��m
+                Vector3 targetPosition = rb.position;
 
-                targetPosition.x += 2;
+                if (targetPosition.x +2 < -4)
+                {
+                    targetPosition.x += 2;
+                    rb.MovePosition(targetPosition);
+                    WitchList[i].SendMessage("update_origin_position", targetPosition);
+                }
+                else
+                {
+                    Debug.Log(targetPosition.x);
+                }
 
-                rb.MovePosition(targetPosition);
 
-                WitchList[i].SendMessage("update_origin_position", targetPosition);
 
             }
             else

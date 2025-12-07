@@ -352,7 +352,7 @@ public class Witchs : MonoBehaviour
         currentState = State.ReadyToLaunch;
         transform.localScale = new Vector3(0.075f, 0.075f, 1);
 
-        fire.active = true;
+        fire.SetActive(true);
         Debug.Log("準備發射");
     }
 
