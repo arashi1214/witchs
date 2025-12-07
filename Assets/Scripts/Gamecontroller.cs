@@ -13,6 +13,7 @@ public class Gamecontroller : MonoBehaviour
     public GameObject[] BuildFire;
 
     private int currentTemp = 25;
+    public GameObject winScene;
 
     [Header("UI")]
     // 暫停畫面
@@ -33,6 +34,7 @@ public class Gamecontroller : MonoBehaviour
     void Start()
     {
         PauseScene.SetActive(false);
+        winScene.SetActive(false);
         isPausing = false;
         UpdateThermometerVisual(currentTemp);
         CreateEnemys();
@@ -157,7 +159,7 @@ public class Gamecontroller : MonoBehaviour
     public void gameOver()
     {
         Debug.Log("Game finsh");
-        EndScene.SetActive(true);
+        winScene.SetActive(true);
     }
 
 }
