@@ -34,6 +34,7 @@ public class Witchs : MonoBehaviour
     private List<Collider2D> childColliders = new List<Collider2D>();
     private bool isRagdollActive = false;
 
+
     private enum State
     {
         FollowingMouse,
@@ -178,12 +179,15 @@ public class Witchs : MonoBehaviour
 
     void HandleFollowingMouse()
     {
-        if (Input.GetMouseButton(0) && checkMouseClick())
+        if (Input.GetMouseButtonUp(0) && checkMouseClick())
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = mousePos;
+            //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = launchPosition;
+            currentState = State.Fire;
+            playAnimation();
+            Debug.Log("已到達就位位置");
         }
-
+        /*
         if (Input.GetMouseButtonUp(0))
         {
             if (onReadyStatus)
@@ -197,7 +201,7 @@ public class Witchs : MonoBehaviour
             {
                 rb.MovePosition(originPosition);
             }
-        }
+        }*/
     }
 
     void HandleReadyToLaunch()
