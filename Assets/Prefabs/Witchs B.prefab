@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDragDistance: 1.5
-  forceMultiplier: 70
+  forceMultiplier: 75
   trajectoryLine: {fileID: 0}
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1

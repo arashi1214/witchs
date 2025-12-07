@@ -30,6 +30,7 @@ public class Witchs : MonoBehaviour
     // 儲存所有子物件的 Rigidbody 和關節
     private List<Rigidbody2D> childRigidbodies = new List<Rigidbody2D>();
     private List<HingeJoint2D> hingeJoints = new List<HingeJoint2D>();
+    private List<Collider2D> childColliders = new List<Collider2D>();
     private bool isRagdollActive = false;
 
     private enum State
@@ -88,6 +89,17 @@ public class Witchs : MonoBehaviour
             }
         }
 
+        // 收集所有子物件的 Collider (不包含主物件的)
+        Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
+        Collider2D mainCollider = GetComponent<Collider2D>();
+        foreach (var collider in allColliders)
+        {
+            if (collider != mainCollider)
+            {
+                childColliders.Add(collider);
+            }
+        }
+
         // 收集所有關節
         HingeJoint2D[] allJoints = GetComponentsInChildren<HingeJoint2D>();
         foreach (var joint in allJoints)
@@ -105,6 +117,12 @@ public class Witchs : MonoBehaviour
             childRb.bodyType = RigidbodyType2D.Kinematic;
         }
 
+        // 禁用子物件的 Collider,避免阻擋主物件碰撞
+        foreach (var collider in childColliders)
+        {
+            collider.enabled = false;
+        }
+
         // 暫時禁用關節
         foreach (var joint in hingeJoints)
         {
@@ -112,6 +130,7 @@ public class Witchs : MonoBehaviour
         }
 
         isRagdollActive = false;
+        Debug.Log("布娃娃已禁用 - 子物件 Collider 已關閉");
     }
 
     void EnableRagdoll()
@@ -121,7 +140,13 @@ public class Witchs : MonoBehaviour
         {
             childRb.bodyType = RigidbodyType2D.Dynamic;
         }
-
+        /*
+        // 啟用子物件的 Collider
+        foreach (var collider in childColliders)
+        {
+            collider.enabled = true;
+        }
+        */
         // 啟用關節
         foreach (var joint in hingeJoints)
         {
@@ -129,6 +154,7 @@ public class Witchs : MonoBehaviour
         }
 
         isRagdollActive = true;
+        Debug.Log("布娃娃已啟用!");
     }
 
     void Update()
@@ -215,19 +241,11 @@ public class Witchs : MonoBehaviour
             trajectoryLine.enabled = false;
         }
 
-        // 延遲啟用布娃娃效果
-        StartCoroutine(EnableRagdollAfterDelay(0.3f));
+        EnableRagdoll();
 
         Debug.Log("發射!");
     }
 
-    IEnumerator EnableRagdollAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        // 碰撞後才啟用布娃娃
-        // 在 OnCollisionEnter2D 中啟用
-    }
 
     void ShowTrajectory(Vector2 velocity)
     {
@@ -265,18 +283,13 @@ public class Witchs : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 第一次碰撞時才啟用布娃娃
-        if (currentState == State.Launched && !isRagdollActive)
-        {
-            EnableRagdoll();
-        }
-
         if (currentState == State.Launched)
         {
             switch (collision.gameObject.tag)
             {
                 case "Ground":
-                    Destroy(gameObject, 2f);  // 延遲銷毀
+                    Debug.Log("撞到地面!");
+                    Destroy(gameObject);
                     if (GameController != null)
                     {
                         GameController.SendMessage("onward", gameObject, SendMessageOptions.DontRequireReceiver);
@@ -284,14 +297,19 @@ public class Witchs : MonoBehaviour
                     break;
 
                 case "Enemy":
+                    Debug.Log("撞到敵人!");
                     if (GameController != null)
                     {
                         GameController.SendMessage("increase_temperature", Act, SendMessageOptions.DontRequireReceiver);
                         GameController.SendMessage("onward", gameObject, SendMessageOptions.DontRequireReceiver);
                         GameController.SendMessage("CreateEnemys", SendMessageOptions.DontRequireReceiver);
                     }
-                    Destroy(gameObject, 1f);
+                    Destroy(gameObject);
                     Destroy(collision.gameObject);
+                    break;
+
+                default:
+                    Debug.Log($"撞到其他物體: {collision.gameObject.name}");
                     break;
             }
         }
