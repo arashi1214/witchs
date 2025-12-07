@@ -156,11 +156,13 @@ public class Gamecontroller : MonoBehaviour
     {
         Debug.Log("Game finsh");
         EndScene.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void gameWin()
     {
         winScene.SetActive(true);
+        Time.timeScale = 0;
     }
 
 }
