@@ -62,6 +62,10 @@ public class Gamecontroller : MonoBehaviour
         {
             Debug.Log("遊戲結束");
         }
+        else
+        {
+            BuildFire.active = false;
+        }
 
         // 暫停按鈕
         if (Input.GetKeyDown(KeyCode.Escape))
