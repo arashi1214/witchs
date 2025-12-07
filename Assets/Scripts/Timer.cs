@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
 
     public AudioSource gameOverAudio;
 
+    private bool gameStatus = true;
+
     private void Start()
     {
         timerImage = GetComponent<Image>();
@@ -25,11 +27,12 @@ public class Timer : MonoBehaviour
         currentTime -= Time.deltaTime;
         UpdateThermometerVisual();
     
-        if(currentTime <= 0)
+        if(currentTime <= 0 && gameStatus)
         {
             Debug.Log("GameOver");
             GameController.SendMessage("gameOver");
             gameOverAudio.Play();
+            gameStatus = false;
         }
     }
 
