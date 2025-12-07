@@ -484,7 +484,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &395932482
@@ -539,7 +539,6 @@ GameObject:
   - component: {fileID: 440657547}
   - component: {fileID: 440657546}
   - component: {fileID: 440657545}
-  - component: {fileID: 440657548}
   m_Layer: 0
   m_Name: fire
   m_TagString: Untagged
@@ -549,7 +548,7 @@ GameObject:
   m_IsActive: 1
 --- !u!95 &440657545
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -566,8 +565,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &440657546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -635,7 +633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!1001 &464336616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,7 +699,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9122879185129525754, guid: f0fe686cf622f4a088cfc24db2bf747a, type: 3}
   m_PrefabInstance: {fileID: 464336616}
   m_PrefabAsset: {fileID: 0}
-
 --- !u!1 &492575830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1017,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &797905780
@@ -1455,6 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumTime: 180
+  gameOverAudio: {fileID: 0}
 --- !u!1001 &1179805944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1841,7 +1838,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1330248671
@@ -1857,7 +1854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1387116001
 GameObject:
@@ -1889,7 +1886,7 @@ Transform:
   m_Children:
   - {fileID: 213160243}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426628475
 GameObject:
@@ -1972,7 +1969,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1479291312
@@ -2044,7 +2041,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1479291315
@@ -2088,6 +2085,7 @@ MonoBehaviour:
   maxValue: 100
   currentValue: 100
   HPbar: {fileID: 1643686361}
+  GameController: {fileID: 1221889663}
 --- !u!222 &1479291317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2211,7 +2209,7 @@ RectTransform:
   - {fileID: 115408844}
   - {fileID: 797905781}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2299,7 +2297,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1643686359
@@ -2535,7 +2533,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2061963710

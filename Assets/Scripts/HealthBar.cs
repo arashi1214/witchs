@@ -8,7 +8,8 @@ public class HealthBar : MonoBehaviour
     public float maxValue;
     public float currentValue;
     public Image HPbar;
-    
+    public GameObject GameController;
+
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class HealthBar : MonoBehaviour
     {
         currentValue -= damage;
         UpdateThermometerVisual();
+
+        if (currentValue <= 0)
+        {
+            GameController.SendMessage("gameOver");
+        }
     }
 
     void UpdateThermometerVisual()
