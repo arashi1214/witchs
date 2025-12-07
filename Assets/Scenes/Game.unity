@@ -2569,7 +2569,7 @@ MonoBehaviour:
   - {fileID: 5157310228923578617, guid: 2d65009070eef1742bb0f0a8956c1505, type: 3}
   - {fileID: 5157310228923578617, guid: fd798ecd91d053d42b3dd2cf26bf1aab, type: 3}
   - {fileID: 5157310228923578617, guid: 0ae98e44593c7364398062fd2e63fb82, type: 3}
-  standbyNumber: 20
+  standbyNumber: 6
   CreatePoint: {fileID: 213156410}
 --- !u!114 &1221889668
 MonoBehaviour:

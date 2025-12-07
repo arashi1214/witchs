@@ -10,16 +10,19 @@ public class WitchsController : MonoBehaviour
     [SerializeField] private Transform CreatePoint;
 
     private List<GameObject> WitchList = new List<GameObject>();
+    Vector2 create_position;
 
     // Start is called before the first frame update
     void Start()
     {
+        create_position = CreatePoint.position;
         cerate(standbyNumber);
+        
     }
 
     void cerate(int number)
     {
-        Vector2 create_position = CreatePoint.position;
+        
 
         for (int i = 0; i < number; i++)
         {
@@ -36,6 +39,12 @@ public class WitchsController : MonoBehaviour
     {
         Debug.Log("前進");
         WitchList.Remove(remove_witch);
+
+        if(WitchList.Count <= 5){
+            create_position.x = WitchList[WitchList.Count-1].transform.position.x -2;
+            cerate(5);
+        }
+
 
         for (int i = 0; i < WitchList.Count; i++)
         {
