@@ -25,6 +25,9 @@ public class EnemyScript : MonoBehaviour
     [Header("射擊音效")]
     public AudioSource[] shootingAudio;
 
+    [Header("擊中音效")]
+    public AudioSource hitAudio;
+
     // 私有變數
     private Rigidbody2D rb;
     private Transform targetPoint; // 當前目標點
@@ -152,6 +155,14 @@ public class EnemyScript : MonoBehaviour
         else
         {
             Debug.LogError("子彈預製件上缺少 Rigidbody2D 元件！");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Witch"))
+        {
+            hitAudio.Play();
         }
     }
 }
