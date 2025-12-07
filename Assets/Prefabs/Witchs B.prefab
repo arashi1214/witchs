@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -120,8 +120,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 7.21, y: 6.3}
+  m_Offset: {x: -0.37272522, y: -0.21532837}
+  m_Size: {x: 5.675721, y: 6.3884826}
   m_Direction: 0
 --- !u!1 &4076539348916193455
 GameObject:
@@ -149,14 +149,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4076539348916193455}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.14, y: -5.42, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.047420092, w: 0.998875}
+  m_LocalPosition: {x: 2.8, y: -5.0599413, z: 0}
   m_LocalScale: {x: 1.12976, y: 1.12976, z: 0.11311722}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5792201699125622020}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.436}
 --- !u!212 &1356207123625500148
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -243,8 +243,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5.3000007, y: 10.670001}
+  m_Offset: {x: -0.43248793, y: -0.17734723}
+  m_Size: {x: 2.6368964, y: 10.315294}
   m_Direction: 0
 --- !u!1 &5157310228923578617
 GameObject:
@@ -306,7 +306,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDragDistance: 1.5
-  forceMultiplier: 13
+  forceMultiplier: 70
   trajectoryLine: {fileID: 0}
   trajectoryPointCount: 30
   trajectoryTimeStep: 0.1
@@ -407,8 +407,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.98876953, y: 4.9995894}
-  m_Size: {x: 10.737305, y: 18.940828}
+  m_Offset: {x: -0.6881714, y: 4.9995894}
+  m_Size: {x: 10.136108, y: 18.940828}
   m_Direction: 0
 --- !u!233 &48906412
 HingeJoint2D:
@@ -424,8 +424,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: -4.0420485, y: 6.2555547}
-  m_ConnectedAnchor: {x: 0.9300948, y: 1.7824346}
+  m_Anchor: {x: -4.091797, y: 6.7563477}
+  m_ConnectedAnchor: {x: 0.8936451, y: 2.183591}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -449,7 +449,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 2.0210242, y: 7.0254683}
-  m_ConnectedAnchor: {x: 2.8561387, y: 11.462414}
+  m_ConnectedAnchor: {x: 2.855867, y: 11.462566}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -468,12 +468,12 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 1522366713}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -2.3097467, y: -1.924786}
-  m_ConnectedAnchor: {x: -1.1099746, y: -0.1554786}
+  m_ConnectedAnchor: {x: 2.2009816, y: -4.769487}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -497,7 +497,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 1.1548696, y: -1.7323073}
-  m_ConnectedAnchor: {x: -0.8719822, y: 3.2641377}
+  m_ConnectedAnchor: {x: -1.1709291, y: 3.0701704}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -604,7 +604,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -626,6 +626,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00000047683716}
-  m_Size: {x: 3.84, y: 12.02}
+  m_Offset: {x: -0.19158271, y: -0.00000054545916}
+  m_Size: {x: 2.6910949, y: 12.02}
   m_Direction: 0

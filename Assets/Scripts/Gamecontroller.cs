@@ -96,8 +96,15 @@ public class Gamecontroller : MonoBehaviour
     }
 
     void CreateEnemys(){
+        StartCoroutine(WaitAndDoAction());
+    }
+
+    IEnumerator WaitAndDoAction()
+    {
+        yield return new WaitForSeconds(1f);
         var groups = GameObject.Find("EnemysCreatePoint");
         Instantiate(Enemys, groups.transform);
+        Debug.Log("敵人生成");
     }
 
     public void gameOver()
