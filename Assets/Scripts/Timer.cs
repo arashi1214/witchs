@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     private Image timerImage;
     private GameObject GameController;
 
+    public AudioSource gameOverAudio;
+
     private void Start()
     {
         timerImage = GetComponent<Image>();
@@ -27,6 +29,7 @@ public class Timer : MonoBehaviour
         {
             Debug.Log("GameOver");
             GameController.SendMessage("gameOver");
+            gameOverAudio.Play();
         }
     }
 

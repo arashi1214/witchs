@@ -22,6 +22,9 @@ public class EnemyScript : MonoBehaviour
     [Tooltip("目標位置")]
     public Transform targetPosition;
 
+    [Header("射擊音效")]
+    public AudioSource[] shootingAudio;
+
     // 私有變數
     private Rigidbody2D rb;
     private Transform targetPoint; // 當前目標點
@@ -111,6 +114,7 @@ public class EnemyScript : MonoBehaviour
 
         // 執行射擊邏輯
         ShootTarget();
+        shootingAudio[Random.Range(0, shootingAudio.Length)].Play();
 
         // 重新選擇下一個目標點
         //targetIndex = (targetIndex + 1) % wayPoints.Length; // 依序移動
