@@ -10,7 +10,7 @@ public class Gamecontroller : MonoBehaviour
     public Image mercury;
     public int minTemp = 0;
     public int maxTemp = 100;
-    public GameObject BuildFire;
+    public GameObject[] BuildFire;
 
     private int currentTemp = 25;
 
@@ -24,6 +24,7 @@ public class Gamecontroller : MonoBehaviour
     // 溫度下降
     private float timer = 0f;
     private float repeatInterval = 3.0f;
+
 
     //敵人
     public GameObject Enemys;
@@ -55,9 +56,9 @@ public class Gamecontroller : MonoBehaviour
 
 
         // 溫度達到最高
-        if (currentTemp >= maxTemp / 3 * 2)
+        if (currentTemp >= maxTemp / 2 * 3)
         {
-            BuildFire.SetActive(true);
+            BuildFire[4].SetActive(true);
         }
         else if (currentTemp >= maxTemp)
         {
@@ -66,7 +67,7 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            BuildFire.SetActive(false);
+            BuildFire[0].SetActive(false);
         }
 
         // 暫停按鈕
