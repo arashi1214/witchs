@@ -15,7 +15,7 @@ public class Witchs : MonoBehaviour
 
 
     [Header("放置位置")]
-    [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f);
+    [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -2f);
 
     [Header("女巫數值")]
     [SerializeField] private int Act;
