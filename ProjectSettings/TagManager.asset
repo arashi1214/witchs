@@ -57,6 +57,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1513042777
     locked: 0
+  - name: Effects
+    uniqueID: 2821829335
+    locked: 0
   - name: Castle
     uniqueID: 3664590263
     locked: 0
