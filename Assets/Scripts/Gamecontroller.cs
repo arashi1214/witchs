@@ -86,7 +86,7 @@ public class Gamecontroller : MonoBehaviour
     {
         currentTemp += degree;
         UpdateThermometerVisual(currentTemp);
-        Debug.Log("�ثe�ū�" + currentTemp.ToString());
+        //Debug.Log("溫度升高" + currentTemp.ToString());
     }
         
     void UpdateThermometerVisual(int newTemp)
