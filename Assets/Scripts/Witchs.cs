@@ -8,10 +8,9 @@ public class Witchs : MonoBehaviour
     [SerializeField] private float maxDragDistance = 3f;
     [SerializeField] private float forceMultiplier = 5f;
 
-    [Header("發射後軌跡")] // 新增一個用於發射後軌跡的 LineRenderer (可選，但推薦分開)
-    [SerializeField] private LineRenderer actualTrajectoryLine;
-
-
+    [Header("火焰軌跡")]
+    [SerializeField] private TrailRenderer fireTrailRenderer;
+    [SerializeField] private GameObject fire;
 
     [Header("放置位置")]
     [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f);
@@ -19,9 +18,6 @@ public class Witchs : MonoBehaviour
     [Header("女巫數值")]
     [SerializeField] private int Act;
 
-    //軌跡相關
-    private List<Vector3> trajectoryPoints = new List<Vector3>(); // 儲存實際路徑點
-    private bool isTrackingTrajectory = false; // 追蹤開關
 
 
     private Rigidbody2D rb;
@@ -72,17 +68,31 @@ public class Witchs : MonoBehaviour
         // 初始時禁用布娃娃
         DisableRagdoll();
 
+        if (fireTrailRenderer != null)
+        {
+            fireTrailRenderer.enabled = false;
+        }
+
         originPosition = transform.position;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        // 在 Launched 狀態下且追蹤開啟時才記錄位置
-        if (currentState == State.Launched && isTrackingTrajectory)
+        switch (currentState)
         {
-            RecordAndDrawTrajectory();
+            case State.FollowingMouse:
+                HandleFollowingMouse();
+                break;
+
+            case State.ReadyToLaunch:
+                HandleReadyToLaunch();
+                break;
+
+            case State.Launched:
+                break;
         }
     }
+
 
     void CollectChildComponents()
     {
@@ -164,22 +174,7 @@ public class Witchs : MonoBehaviour
         Debug.Log("布娃娃已啟用!");
     }
 
-    void Update()
-    {
-        switch (currentState)
-        {
-            case State.FollowingMouse:
-                HandleFollowingMouse();
-                break;
 
-            case State.ReadyToLaunch:
-                HandleReadyToLaunch();
-                break;
-
-            case State.Launched:
-                break;
-        }
-    }
 
     void HandleFollowingMouse()
     {
@@ -240,14 +235,11 @@ public class Witchs : MonoBehaviour
 
         EnableRagdoll();
 
-        // 【新增】啟動軌跡追蹤
-        trajectoryPoints.Clear();
-        isTrackingTrajectory = true;
-
-        // 如果有實際軌跡 LineRenderer，啟用它
-        if (actualTrajectoryLine)
+        if (fireTrailRenderer != null)
         {
-            actualTrajectoryLine.enabled = true;
+            // 確保先清除舊有的軌跡殘留 (如果有的話)
+            fireTrailRenderer.Clear();
+            fireTrailRenderer.enabled = true; // 啟用 Trail Renderer
         }
 
         Debug.Log("發射!");
@@ -330,6 +322,8 @@ public class Witchs : MonoBehaviour
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
         transform.localScale = new Vector3(0.075f, 0.075f, 1);
+
+        fire.active = true;
         Debug.Log("準備發射");
     }
 
@@ -338,28 +332,4 @@ public class Witchs : MonoBehaviour
         StartCoroutine(WaitAndDoAction());
     }
 
-    void RecordAndDrawTrajectory()
-    {
-        // 限制每隔一段時間才記錄一個點，以避免線條過密，導致效能下降
-        if (Time.fixedTime % 0.05f < Time.fixedDeltaTime) // 例如每 0.05 秒記錄一次
-        {
-            // 記錄當前世界位置
-            trajectoryPoints.Add(transform.position);
-
-            if (actualTrajectoryLine)
-            {
-                // 更新 LineRenderer 的點數和位置
-                actualTrajectoryLine.positionCount = trajectoryPoints.Count;
-                actualTrajectoryLine.SetPositions(trajectoryPoints.ToArray());
-            }
-
-            // 【停止追蹤條件】
-            // 判斷速度是否過低（落地或停住）來停止追蹤
-            if (rb.velocity.sqrMagnitude < 0.1f && rb.IsSleeping())
-            {
-                isTrackingTrajectory = false;
-                Debug.Log("軌跡追蹤停止，女巫已靜止。");
-            }
-        }
-    }
 }

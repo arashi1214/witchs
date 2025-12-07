@@ -1115,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop
       objectReference: {fileID: 0}
+    - target: {fileID: 1981582451592149295, guid: 7295e6c4dba8ffe458708dba32bddf9b, type: 3}
+      propertyPath: m_TagString
+      value: Pope
+      objectReference: {fileID: 0}
     - target: {fileID: 7637955378478074604, guid: 7295e6c4dba8ffe458708dba32bddf9b, type: 3}
       propertyPath: speed
       value: 1
@@ -1923,8 +1927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -599, y: -463}
-  m_SizeDelta: {x: 100, y: 19.5}
+  m_AnchoredPosition: {x: -605.93, y: -463}
+  m_SizeDelta: {x: 170.62, y: 19.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643686361
 MonoBehaviour:
