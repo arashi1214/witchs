@@ -753,8 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a3f23492b034721b00f5fd4d72d2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseScene: {fileID: 0}
-  isPausing: 0
 --- !u!4 &1748786833
 Transform:
   m_ObjectHideFlags: 0
@@ -780,6 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1798040329}
   - component: {fileID: 1798040328}
+  - component: {fileID: 1798040330}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -898,6 +897,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798040330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798040327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c2b4909f49caa4e8e67a87713e24eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2021867613
 GameObject:
   m_ObjectHideFlags: 0

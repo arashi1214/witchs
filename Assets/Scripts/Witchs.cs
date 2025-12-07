@@ -12,12 +12,16 @@ public class Witchs : MonoBehaviour
     [SerializeField] private TrailRenderer fireTrailRenderer;
     [SerializeField] private GameObject fire;
 
+
     [Header("放置位置")]
     [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f);
 
     [Header("女巫數值")]
     [SerializeField] private int Act;
 
+    [Header("女巫聲音")]
+    [SerializeField] private AudioClip[] scream;
+    [SerializeField] public AudioSource Effectplayer;
 
 
     private Rigidbody2D rb;
@@ -239,6 +243,9 @@ public class Witchs : MonoBehaviour
 
         EnableRagdoll();
 
+        int randeffect = Random.Range(0, scream.Length);
+        playEffects(scream[randeffect]);
+
         if (fireTrailRenderer != null)
         {
             // 確保先清除舊有的軌跡殘留 (如果有的話)
@@ -308,10 +315,6 @@ public class Witchs : MonoBehaviour
                     Destroy(gameObject);
                     Destroy(collision.gameObject);
                     break;
-
-                default:
-                    Debug.Log($"撞到其他物體: {collision.gameObject.name}");
-                    break;
             }
         }
     }
@@ -334,6 +337,12 @@ public class Witchs : MonoBehaviour
     private void playAnimation()
     {
         StartCoroutine(WaitAndDoAction());
+    }
+
+    public void playEffects(AudioClip clipName)
+    {
+        Effectplayer.clip = clipName;
+        Effectplayer.Play();
     }
 
 }

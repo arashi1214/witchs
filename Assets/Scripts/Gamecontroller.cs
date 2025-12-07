@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gamecontroller : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class Gamecontroller : MonoBehaviour
         // 溫度達到最高
         if (currentTemp >= maxTemp / 3 * 2)
         {
-            BuildFire.active = true;
+            BuildFire.SetActive(true);
         }
         else if (currentTemp >= maxTemp)
         {
@@ -64,7 +65,7 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            BuildFire.active = false;
+            BuildFire.SetActive(false);
         }
 
         // 暫停按鈕
@@ -84,6 +85,7 @@ public class Gamecontroller : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
 
     public void Continue()
     {
