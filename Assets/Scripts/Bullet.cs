@@ -17,9 +17,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Target"))
+        if (collision.gameObject.CompareTag("Target"))
         {
             healthbar.TakeDamage(damageAmount);
+
         }
 
         TrailRenderer trail = GetComponent<TrailRenderer>();
@@ -47,6 +48,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(collision.tag == "Target")
         {
             collision.gameObject.SendMessage("TakeDamage", Act);
