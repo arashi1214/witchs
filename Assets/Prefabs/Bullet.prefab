@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   targetTransform: {fileID: 0}
+  Act: 2
 --- !u!50 &6966733221126998126
 Rigidbody2D:
   serializedVersion: 4
@@ -276,6 +277,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

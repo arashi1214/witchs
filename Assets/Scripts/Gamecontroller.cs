@@ -54,13 +54,29 @@ public class Gamecontroller : MonoBehaviour
             }
         }
 
-        Debug.Log(currentTemp);
         // 溫度達到最高
-        if (currentTemp >= maxTemp / 1 * 3)
+        if (currentTemp >= 75)
         {
-            Debug.Log("test");
+            BuildFire[0].SetActive(true);
+            BuildFire[1].SetActive(false);
+            BuildFire[2].SetActive(false);
             BuildFire[3].SetActive(true);
         }
+        else if (currentTemp >= 50 && currentTemp < 75)
+        {
+            BuildFire[0].SetActive(true);
+            BuildFire[1].SetActive(false);
+            BuildFire[2].SetActive(true);
+            BuildFire[3].SetActive(false);
+        }
+        else if (currentTemp >= 30 && currentTemp < 50)
+        {
+            BuildFire[0].SetActive(true);
+            BuildFire[1].SetActive(true);
+            BuildFire[2].SetActive(false);
+            BuildFire[3].SetActive(false);
+        }
+
         else if (currentTemp >= maxTemp)
         {
             gameOver();
@@ -69,6 +85,9 @@ public class Gamecontroller : MonoBehaviour
         else
         {
             BuildFire[0].SetActive(false);
+            BuildFire[1].SetActive(false);
+            BuildFire[2].SetActive(false);
+            BuildFire[3].SetActive(false);
         }
 
         // 暫停按鈕
