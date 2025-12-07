@@ -38,4 +38,11 @@ public class Timer : MonoBehaviour
         float fillRatio = Mathf.InverseLerp(0, maximumTime, currentTime);
         timerImage.fillAmount = fillRatio;
     }
+
+    public void TakeDamage(float damage)
+    {
+
+        currentTime -= damage;
+        UpdateThermometerVisual();
+    }
 }

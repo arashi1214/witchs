@@ -7,19 +7,19 @@ public class Bullet : MonoBehaviour
     public float damageAmount;
     public Transform targetTransform;
     public float Act = 5;
-    private HealthBar healthbar;
+    private GameObject timer;
 
     private void Awake()
     {
         GameObject HP = GameObject.FindWithTag("Target");
-        healthbar = HP.GetComponent<HealthBar>();
+        timer = GameObject.Find("seconds");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Target"))
         {
-            healthbar.TakeDamage(damageAmount);
+            timer.gameObject.SendMessage("TakeDamage", Act);
 
         }
 
@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
 
         if(collision.tag == "Target")
         {
-            collision.gameObject.SendMessage("TakeDamage", Act);
+            timer.gameObject.SendMessage("TakeDamage", Act);
         }
 
         Destroy(gameObject);
