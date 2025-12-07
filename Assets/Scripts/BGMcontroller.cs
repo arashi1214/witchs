@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class BGMcontroller : MonoBehaviour
 {
+    public static BGMcontroller instance;
+
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()
