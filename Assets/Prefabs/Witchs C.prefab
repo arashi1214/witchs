@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2387500620602321850}
   - component: {fileID: 752995407285307343}
   - component: {fileID: 5151013083947762512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FF1-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3138431419826093605}
   - component: {fileID: 3177964097295509222}
   - component: {fileID: 4780020590889004685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FF2-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 7302908860256270773}
   - component: {fileID: 1353501496695244697}
   - component: {fileID: 417124256778150911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FH2-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 2029257833}
   - component: {fileID: 2029257832}
   - component: {fileID: 2029257831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Witchs C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2127781939
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 978bc452cb1a40c4bba29db1218bc72c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 7317883560280538178}
   - component: {fileID: 6572145151995659303}
   - component: {fileID: 9024890409569404150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FH1-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8819778279465724058}
   - component: {fileID: 355298081662838025}
   - component: {fileID: 268281093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Witchs A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4377956426429869205}
   - component: {fileID: 1573372158631603706}
   - component: {fileID: 1029675520264367939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TD-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
