@@ -61,6 +61,7 @@ public class Gamecontroller : MonoBehaviour
         }
         else if (currentTemp >= maxTemp)
         {
+            EndScene.SetActive(true);
             Debug.Log("遊戲結束");
         }
         else
@@ -121,6 +122,7 @@ public class Gamecontroller : MonoBehaviour
     public void gameOver()
     {
         Debug.Log("Game finsh");
+        EndScene.SetActive(true);
     }
 
 }

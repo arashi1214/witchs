@@ -8,12 +8,14 @@ public class Timer : MonoBehaviour
     public float maximumTime = 180f;
     float currentTime;
     private Image timerImage;
+    private GameObject GameController;
 
     private void Start()
     {
         timerImage = GetComponent<Image>();
         currentTime = maximumTime;
-        timerImage.fillAmount = 1;    
+        timerImage.fillAmount = 1;
+        GameController = GameObject.Find("GameController");
     }
 
     private void FixedUpdate()
@@ -24,6 +26,7 @@ public class Timer : MonoBehaviour
         if(currentTime == 0)
         {
             Debug.Log("GameOver");
+            GameController.SendMessage("gameOver");
         }
     }
 
