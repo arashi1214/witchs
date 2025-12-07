@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float damageAmount;
     public Transform targetTransform;
+    public float Act = 5;
     private HealthBar healthbar;
 
     private void Awake()
@@ -46,6 +47,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Target")
+        {
+            collision.gameObject.SendMessage("TakeDamage", Act);
+        }
+
         Destroy(gameObject);
     }
 }

@@ -144,7 +144,6 @@ public class Witchs : MonoBehaviour
         }
 
         isRagdollActive = false;
-        Debug.Log("布娃娃已禁用 - 子物件 Collider 已關閉");
     }
 
     void EnableRagdoll()

@@ -15,5 +15,6 @@ public class HealthBar : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentValue -= damage;
+        Debug.Log(currentValue);
     }
 }
