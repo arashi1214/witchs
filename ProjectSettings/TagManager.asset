@@ -10,6 +10,7 @@ TagManager:
   - out
   - EnemyCreatePoint
   - Pope
+  - Witch
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: FX_Foreground
+    uniqueID: 1203186527
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
