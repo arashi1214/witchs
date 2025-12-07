@@ -54,11 +54,12 @@ public class Gamecontroller : MonoBehaviour
             }
         }
 
-
+        Debug.Log(currentTemp);
         // 溫度達到最高
-        if (currentTemp >= maxTemp / 2 * 3)
+        if (currentTemp >= maxTemp / 1 * 3)
         {
-            BuildFire[4].SetActive(true);
+            Debug.Log("test");
+            BuildFire[3].SetActive(true);
         }
         else if (currentTemp >= maxTemp)
         {
