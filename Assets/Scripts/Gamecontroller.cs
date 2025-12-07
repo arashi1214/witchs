@@ -25,6 +25,7 @@ public class Gamecontroller : MonoBehaviour
     // 溫度下降
     private float timer = 0f;
     private float repeatInterval = 3.0f;
+    private bool game_status = true;
 
 
     //敵人
@@ -44,6 +45,11 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!game_status)
+        {
+            return;
+        }
+
         //定期降溫
         timer += Time.deltaTime;
         if (timer > repeatInterval)
@@ -141,15 +147,26 @@ public class Gamecontroller : MonoBehaviour
 
     public void gameOver()
     {
-        Debug.Log("Game finsh");
-        EndScene.SetActive(true);
-        Time.timeScale = 0;
+        if (game_status)
+        {
+            Debug.Log("Game over");
+            EndScene.SetActive(true);
+            Time.timeScale = 0;
+            game_status = false;
+        }
+
     }
 
     public void gameWin()
     {
-        winScene.SetActive(true);
-        Time.timeScale = 0;
+
+        if (game_status)
+        {
+            Debug.Log("Game finsh");
+            winScene.SetActive(true);
+            Time.timeScale = 0;
+            game_status = false;
+        }
     }
 
 }
