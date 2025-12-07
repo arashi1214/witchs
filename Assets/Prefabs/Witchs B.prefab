@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 48906411}
   - component: {fileID: 48906410}
   - component: {fileID: 48906409}
-  - component: {fileID: -2297449537157856225}
+  - component: {fileID: 3979992075097635788}
   m_Layer: 6
   m_Name: Witchs B
   m_TagString: Untagged
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDragDistance: 1.5
   forceMultiplier: 75
-  actualTrajectoryLine: {fileID: -2297449537157856225}
+  actualTrajectoryLine: {fileID: 0}
   launchPosition: {x: -5, y: -5}
   Act: 100
 --- !u!222 &8213350457110886714
@@ -505,8 +505,9 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 15.06849
     m_UpperAngle: 112.21299
---- !u!120 &-2297449537157856225
-LineRenderer:
+--- !u!96 &3979992075097635788
+TrailRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -525,7 +526,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69e10e886d52d20478f9ed5424126be8, type: 2}
+  - {fileID: 2100000, guid: 2b76e068aad1b4a52853dab52f652407, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -546,9 +547,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -556,22 +555,31 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.09876633
+        time: 0.14015232
+        value: 0.31309697
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.46428573
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5985924, b: 0.1830188, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.9433962, g: 0.23871075, b: 0, a: 1}
+      key1: {r: 1, g: 0.8647258, b: 0.25943398, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -579,7 +587,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -602,8 +610,9 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
+  m_Emitting: 1
 --- !u!1 &8995034943525390483
 GameObject:
   m_ObjectHideFlags: 0

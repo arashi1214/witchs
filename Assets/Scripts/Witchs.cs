@@ -274,6 +274,16 @@ public class Witchs : MonoBehaviour
             onReadyStatus = true;
             Debug.Log("位置就緒");
         }
+
+        if (collision.gameObject.CompareTag("Pope"))
+        {
+            PropMoving pope = collision.gameObject.GetComponent<PropMoving>();
+            if (pope != null)
+            {
+                pope.TakeHit(); // 呼叫震動
+                Debug.Log("Shaking");
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
