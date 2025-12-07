@@ -55,7 +55,12 @@ public class Gamecontroller : MonoBehaviour
         }
 
         // 溫度達到最高
-        if (currentTemp >= 75)
+        if (currentTemp >= maxTemp)
+        {
+            gameOver();
+            Debug.Log("遊戲結束");
+        }
+        else if (currentTemp >= 75)
         {
             BuildFire[0].SetActive(true);
             BuildFire[1].SetActive(false);
@@ -77,11 +82,6 @@ public class Gamecontroller : MonoBehaviour
             BuildFire[3].SetActive(false);
         }
 
-        else if (currentTemp >= maxTemp)
-        {
-            gameOver();
-            Debug.Log("遊戲結束");
-        }
         else
         {
             BuildFire[0].SetActive(false);
