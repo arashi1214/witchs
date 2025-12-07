@@ -59,7 +59,7 @@ public class Gamecontroller : MonoBehaviour
         // 溫度達到最高
         if (currentTemp >= maxTemp)
         {
-            gameOver();
+            gameWin();
             Debug.Log("遊戲結束");
         }
         else if (currentTemp >= 75)
@@ -159,6 +159,11 @@ public class Gamecontroller : MonoBehaviour
     public void gameOver()
     {
         Debug.Log("Game finsh");
+        EndScene.SetActive(true);
+    }
+
+    public void gameWin()
+    {
         winScene.SetActive(true);
     }
 
