@@ -29,7 +29,7 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody2D rb;
     private Transform targetPoint; // 當前目標點
     private int targetIndex; // 當前目標點的索引
-    private bool isMoving = false; // 是否正在移動
+    private bool isMoving = true; // 是否正在移動
 
     private void Awake()
     {
