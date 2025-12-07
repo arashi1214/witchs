@@ -51,3 +51,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2050424053
+    locked: 0
+  - name: Enemy
+    uniqueID: 1513042777
+    locked: 0
+  - name: Castle
+    uniqueID: 3664590263
+    locked: 0

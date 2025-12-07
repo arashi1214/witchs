@@ -134,20 +134,7 @@ public class Gamecontroller : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         var groups = GameObject.Find("EnemysCreatePoint");
-        GameObject newWitch = Instantiate(Enemys, groups.transform);
-        SpriteRenderer witchRenderer = newWitch.transform.Find("Image").GetComponent<SpriteRenderer>();
-
-        if (witchRenderer != null)
-        {
-            // 3. 設置 Mask Interaction 屬性
-            // 這是關鍵步驟！告訴這個 Sprite Renderer 要被場景中的 Sprite Mask 裁剪
-
-            // 選項 A: 只在遮罩範圍內顯示
-            //witchRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-
-            // 選項 B: 只在遮罩範圍外顯示
-           // witchRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask; 
-        }
+        Instantiate(Enemys, groups.transform);
 
         Debug.Log("敵人生成");
     }
