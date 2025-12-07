@@ -89,6 +89,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1a084750cceb14385996ce72c6650d54, type: 3}
   - {fileID: 8300000, guid: b9b623c4f8b134125b00ad5c73385f90, type: 3}
   Effectplayer: {fileID: 7688327623225816874}
+  collisionParticlesPrefab: {fileID: 993808130731086108, guid: 4ce26a797a7c1448fa7542c6e661da66, type: 3}
 --- !u!222 &8213350457110886714
 CanvasRenderer:
   m_ObjectHideFlags: 0

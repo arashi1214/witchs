@@ -23,6 +23,8 @@ public class Witchs : MonoBehaviour
     [SerializeField] private AudioClip[] scream;
     [SerializeField] public AudioSource Effectplayer;
 
+    [Header("碰撞特效")]
+    [SerializeField] private ParticleSystem collisionParticlesPrefab; // 存放爆炸特效的 Prefab 引用
 
     private Rigidbody2D rb;
     private Vector2 startPosition;
@@ -306,6 +308,20 @@ public class Witchs : MonoBehaviour
 
                 case "Enemy":
                     Debug.Log("撞到敵人!");
+
+                    if (collisionParticlesPrefab != null)
+                    {
+                        // 1. 在碰撞點生成粒子系統的實例 (Instance)
+                        ParticleSystem instance = Instantiate(
+                            collisionParticlesPrefab,
+                            transform.position, // 使用女巫的當前位置作為生成點
+                            Quaternion.identity
+                        );
+
+                        instance.Play();
+                    }
+
+
                     if (GameController != null)
                     {
                         GameController.SendMessage("increase_temperature", Act, SendMessageOptions.DontRequireReceiver);
