@@ -10,9 +10,13 @@ EditorBuildSettings:
     guid: 5ade664696087b14c90a0dcd975a1d49
   - enabled: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: Assets/Scenes/Game.unity
 =======
     path: Assets/Scenes/Testing.unity
 >>>>>>> 3958ef65c7620d4f42d5cc143dd401f3956e4ff3
+=======
+    path: Assets/Scenes/Testing.unity
+>>>>>>> 22d602a4c5ccdaaebb12f9e4c416536f8895a890
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
