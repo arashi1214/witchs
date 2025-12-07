@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Witchs : MonoBehaviour
 {
-    [Header("µoÆg≥]©w")]
-    [SerializeField] private float maxDragDistance = 3f; // ≥Ã§j©Ï¶≤∂Z¬˜
-    [SerializeField] private float forceMultiplier = 5f; // §O∂q≠øº∆
+    [Header("ÔøΩoÔøΩgÔøΩ]ÔøΩw")]
+    [SerializeField] private float maxDragDistance = 3f; // ÔøΩÃ§jÔøΩÏ¶≤ÔøΩZÔøΩÔøΩ
+    [SerializeField] private float forceMultiplier = 5f; // ÔøΩOÔøΩqÔøΩÔøΩÔøΩÔøΩ
 
-    [Header("≠y∏Òπw¥˙")]
+    [Header("ÔøΩyÔøΩÔøΩwÔøΩÔøΩ")]
     [SerializeField] private LineRenderer trajectoryLine;
     [SerializeField] private int trajectoryPointCount = 30;
     [SerializeField] private float trajectoryTimeStep = 0.1f;
 
-    [Header("©Ò∏m¶Ï∏m")]
-    [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f); // ºu§}¶Ï∏m
+    [Header("ÔøΩÔøΩmÔøΩÔøΩm")]
+    [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f); // ÔøΩuÔøΩ}ÔøΩÔøΩm
 
-    [Header("§kß≈º∆≠»")]
+    [Header("ÔøΩkÔøΩ≈º∆≠ÔøΩ")]
     [SerializeField] private int Act;
 
     private Rigidbody2D rb;
@@ -27,13 +27,13 @@ public class Witchs : MonoBehaviour
     private Vector2 originPosition;
     private GameObject GameController;
 
-    // §kß≈™¨∫A
+    // ÔøΩkÔøΩ≈™ÔøΩÔøΩA
     private enum State
     {
-        FollowingMouse,  // ∏Ú¿H∑∆π´
-        Fire, // Ø∏®Ïºu§}°AøUøN§§
-        ReadyToLaunch,   // ∑«≥∆µoÆg
-        Launched         // §wµoÆg
+        FollowingMouse,  // ÔøΩÔøΩÔøΩHÔøΩ∆πÔøΩ
+        Fire, // ÔøΩÔøΩÔøΩÔøΩuÔøΩ}ÔøΩAÔøΩUÔøΩNÔøΩÔøΩ
+        ReadyToLaunch,   // ÔøΩ«≥∆µoÔøΩg
+        Launched         // ÔøΩwÔøΩoÔøΩg
     }
 
     private State currentState = State.FollowingMouse;
@@ -81,7 +81,7 @@ public class Witchs : MonoBehaviour
             transform.position = mousePos;
         }
 
-        //ΩTª{¨Oß_¶≥©‘®Ïºu§}≥B
+        //ÔøΩTÔøΩ{ÔøΩOÔøΩ_ÔøΩÔøΩÔøΩ‘®ÔøΩuÔøΩ}ÔøΩB
         if (Input.GetMouseButtonUp(0))
         {
 
@@ -90,7 +90,7 @@ public class Witchs : MonoBehaviour
                 transform.position = launchPosition;
                 currentState = State.Fire;
                 playAnimation();
-                Debug.Log("§w®Ï´¸©w¶Ï∏m");
+                Debug.Log("ÔøΩwÔøΩÔøΩÔøΩÔøΩwÔøΩÔøΩm");
             }
             else
             {
@@ -113,7 +113,7 @@ public class Witchs : MonoBehaviour
             dragPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = launchPosition - dragPosition;
 
-            // ≠≠®Ó©Ï¶≤∂Z¬˜
+            // ÔøΩÔøΩÔøΩÔøΩÏ¶≤ÔøΩZÔøΩÔøΩ
             if (direction.magnitude > maxDragDistance)
             {
                 direction = direction.normalized * maxDragDistance;
@@ -121,7 +121,7 @@ public class Witchs : MonoBehaviour
 
             transform.position = launchPosition - direction;
 
-            // ≈„•‹≠y∏Ò
+            // ÔøΩÔøΩ‹≠yÔøΩÔøΩ
             if (trajectoryLine)
             {
                 ShowTrajectory(direction * forceMultiplier);
@@ -149,7 +149,7 @@ public class Witchs : MonoBehaviour
             trajectoryLine.enabled = false;
         }
 
-        Debug.Log("ßÎ¬Y");
+        Debug.Log("ÔøΩÔøΩÔøΩY");
     }
 
     void ShowTrajectory(Vector2 velocity)
@@ -194,7 +194,7 @@ public class Witchs : MonoBehaviour
         if (collision.name == "Slingshot")
         {
             onReadyStatus = true;
-            Debug.Log("®ÏπF¶Ï∏m");
+            Debug.Log("‰ΩçÁΩÆÂ∞±Á∑í");
         }
     }
 
@@ -211,7 +211,9 @@ public class Witchs : MonoBehaviour
                 case "Enemy":
                     GameController.SendMessage("increase_temperature", Act);
                     GameController.SendMessage("onward", gameObject);
+                    GameController.SendMessage("CreateEnemys");
                     Destroy(gameObject);
+                    Destroy(collision.gameObject);
                     break;
             }
         }
@@ -229,7 +231,7 @@ public class Witchs : MonoBehaviour
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
         transform.localScale = new Vector3(0.075f, 0.075f, 1);
-        print("•i•HßÎ¬Y");
+        print("Ê∫ñÂÇôÁôºÂ∞Ñ");
     }
 
     private void playAnimation()

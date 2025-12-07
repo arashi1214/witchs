@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour
 {
     // 公開變數：在 Inspector 面板中設定
-    [Tooltip("敵人要移動的目標點陣列 (Waypoints)")]
-    public Transform[] wayPoints;
+    //[Tooltip("敵人要移動的目標點陣列 (Waypoints)")]
+    private List<Transform> wayPoints = new List<Transform>();
     [Tooltip("敵人的移動速度")]
     public float speed = 5f;
     [Tooltip("敵人到達目標點後的等待時間 (射擊間隔)")]
@@ -35,15 +36,19 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
+        setWayPoints();
+        
         // 檢查是否有設定 WayPoints
-        if (wayPoints.Length == 0)
+        if (wayPoints.Count == 0)
         {
-            Debug.LogError("WayPoints 陣列未設定！");
+            Debug.LogError("沒有生成點");
             return;
         }
 
+        targetPosition = GameObject.Find("fire").transform;
+
         // 隨機選擇第一個目標點
-        targetIndex = Random.Range(0, wayPoints.Length);
+        targetIndex = Random.Range(0, wayPoints.Count);
         targetPoint = wayPoints[targetIndex];
 
         // 假設敵人初始位置可能在 Start() 之前已設定 (例如，從生成器生成)
@@ -53,7 +58,15 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(InitializeMovement());
     }
 
-    private void Update()
+    private void setWayPoints(){
+        var points = GameObject.FindGameObjectsWithTag("EnemyCreatePoint");
+        
+        for (int i=0; i < points.Length; i++){
+            wayPoints.Add(points[i].transform);
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (isMoving)
         {
@@ -66,6 +79,7 @@ public class EnemyScript : MonoBehaviour
     /// </summary>
     public void Move()
     {
+ 
         // 計算朝向目標點的方向
         Vector2 direction = targetPoint.position - transform.position;
         // 正規化方向向量並乘以速度
@@ -84,13 +98,13 @@ public class EnemyScript : MonoBehaviour
     {
         // 等待 3 秒後開始第一次移動
         yield return new WaitForSeconds(3f);
-        Debug.Log("開始移動到目標點：" + targetPoint.name);
+        //Debug.Log("開始移動到目標點：" + targetPoint.name);
         isMoving = true;
     }
 
     private IEnumerator WaitAndShoot()
     {
-        Debug.Log("到達目標點，準備射擊...");
+        //Debug.Log("到達目標點，準備射擊...");
 
         // 在射擊間隔時間內停止
         yield return new WaitForSeconds(shootingInterval);
@@ -100,10 +114,10 @@ public class EnemyScript : MonoBehaviour
 
         // 重新選擇下一個目標點
         //targetIndex = (targetIndex + 1) % wayPoints.Length; // 依序移動
-        targetIndex = Random.Range(0, wayPoints.Length); // 或隨機移動
+        targetIndex = Random.Range(0, wayPoints.Count); // 或隨機移動
         targetPoint = wayPoints[targetIndex];
 
-        Debug.Log("移動到下一個目標點：" + targetPoint.name);
+        //Debug.Log("移動到下一個目標點：" + targetPoint.position);
         isMoving = true; // 重新啟動移動
     }
 

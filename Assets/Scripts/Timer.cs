@@ -7,24 +7,29 @@ public class Timer : MonoBehaviour
 {
     public float maximumTime = 180f;
     float currentTime;
-
-    public Slider slider;
+    private Image timerImage;
 
     private void Start()
     {
+        timerImage = GetComponent<Image>();
         currentTime = maximumTime;
-        slider.maxValue = maximumTime;
-        slider.value = slider.maxValue;
+        timerImage.fillAmount = 1;    
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         currentTime -= Time.deltaTime;
-        slider.value = currentTime;
-
+        UpdateThermometerVisual();
+    
         if(currentTime == 0)
         {
             Debug.Log("GameOver");
         }
+    }
+
+    void UpdateThermometerVisual()
+    {
+        float fillRatio = Mathf.InverseLerp(0, maximumTime, currentTime);
+        timerImage.fillAmount = fillRatio;
     }
 }

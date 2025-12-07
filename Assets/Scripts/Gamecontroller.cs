@@ -5,23 +5,25 @@ using UnityEngine.UI;
 
 public class Gamecontroller : MonoBehaviour
 {
-    [Header("·Å«×­p")]
+    [Header("æº«åº¦è¨ˆ")]
     public Image mercury;
     public int minTemp = 0;
     public int maxTemp = 1000;
 
     private int currentTemp = 25;
 
-    // ¼È°±
+    // ï¿½È°ï¿½
     public GameObject PauseScene;
     public bool isPausing;
 
     public GameObject EndScene;
 
-    // ·Å«×­pªº­p®É¾¹
+    // æº«åº¦ä¸‹é™
     private float timer = 0f;
     private float repeatInterval = 3.0f;
 
+    //æ•µäºº
+    public GameObject Enemys;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +31,14 @@ public class Gamecontroller : MonoBehaviour
         PauseScene.SetActive(false);
         isPausing = false;
         UpdateThermometerVisual(currentTemp);
+        CreateEnemys();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ©w®É·Å«×¤U­°
+        //å®šæœŸé™æº«
         timer += Time.deltaTime;
         if (timer > repeatInterval)
         {
@@ -44,18 +47,17 @@ public class Gamecontroller : MonoBehaviour
                 currentTemp -= 1;
                 UpdateThermometerVisual(currentTemp);
                 timer -= repeatInterval;
-                //Debug.Log("·Å«×¤U­°" + currentTemp);
             }
         }
 
 
-        // ·Å«×¹F¨ì³Ì°ªÂI
+        // æº«åº¦é”åˆ°æœ€é«˜
         if (currentTemp >= maxTemp)
         {
-            Debug.Log("¹CÀ¸µ²§ô");
+            Debug.Log("éŠæˆ²çµæŸ");
         }
 
-        // ¼È°±µe­±
+        // æš«åœæŒ‰éˆ•
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPausing = !isPausing;
@@ -84,13 +86,23 @@ public class Gamecontroller : MonoBehaviour
     {
         currentTemp += degree;
         UpdateThermometerVisual(currentTemp);
-        Debug.Log("¥Ø«e·Å«×" + currentTemp.ToString());
+        Debug.Log("ï¿½Ø«eï¿½Å«ï¿½" + currentTemp.ToString());
     }
         
     void UpdateThermometerVisual(int newTemp)
     {
         float fillRatio = Mathf.InverseLerp(minTemp, maxTemp, newTemp);
         mercury.fillAmount = Mathf.Lerp(mercury.fillAmount, fillRatio, Time.deltaTime * 1f);
+    }
+
+    void CreateEnemys(){
+        var groups = GameObject.Find("EnemysCreatePoint");
+        Instantiate(Enemys, groups.transform);
+    }
+
+    public void gameOver()
+    {
+        Debug.Log("Game finsh");
     }
 
 }
