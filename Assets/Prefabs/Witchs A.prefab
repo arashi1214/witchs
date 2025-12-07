@@ -43,7 +43,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0.757, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.036987305}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &8460467318022457582
@@ -181,7 +181,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.26428223, y: -6.3393555}
-  m_ConnectedAnchor: {x: 0.014343262, y: 3.0404663}
+  m_ConnectedAnchor: {x: 0.014038086, y: 3.0404663}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

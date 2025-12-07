@@ -189,27 +189,11 @@ public class Witchs : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && checkMouseClick())
         {
-            //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = launchPosition;
             currentState = State.Fire;
             playAnimation();
             Debug.Log("已到達就位位置");
         }
-        /*
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (onReadyStatus)
-            {
-                transform.position = launchPosition;
-                currentState = State.Fire;
-                playAnimation();
-                Debug.Log("已到達就位位置");
-            }
-            else
-            {
-                rb.MovePosition(originPosition);
-            }
-        }*/
     }
 
     void HandleReadyToLaunch()
@@ -350,7 +334,6 @@ public class Witchs : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         currentState = State.ReadyToLaunch;
-        transform.localScale = new Vector3(0.075f, 0.075f, 1);
 
         fire.SetActive(true);
         Debug.Log("準備發射");
