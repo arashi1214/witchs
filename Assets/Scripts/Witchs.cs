@@ -8,16 +8,21 @@ public class Witchs : MonoBehaviour
     [SerializeField] private float maxDragDistance = 3f;
     [SerializeField] private float forceMultiplier = 5f;
 
-    [Header("軌跡預測")]
-    [SerializeField] private LineRenderer trajectoryLine;
-    [SerializeField] private int trajectoryPointCount = 30;
-    [SerializeField] private float trajectoryTimeStep = 0.1f;
+    [Header("發射後軌跡")] // 新增一個用於發射後軌跡的 LineRenderer (可選，但推薦分開)
+    [SerializeField] private LineRenderer actualTrajectoryLine;
+
+
 
     [Header("放置位置")]
     [SerializeField] private Vector2 launchPosition = new Vector2(-6f, -3f);
 
     [Header("女巫數值")]
     [SerializeField] private int Act;
+
+    //軌跡相關
+    private List<Vector3> trajectoryPoints = new List<Vector3>(); // 儲存實際路徑點
+    private bool isTrackingTrajectory = false; // 追蹤開關
+
 
     private Rigidbody2D rb;
     private Vector2 startPosition;
@@ -68,6 +73,15 @@ public class Witchs : MonoBehaviour
         DisableRagdoll();
 
         originPosition = transform.position;
+    }
+
+    private void FixedUpdate()
+    {
+        // 在 Launched 狀態下且追蹤開啟時才記錄位置
+        if (currentState == State.Launched && isTrackingTrajectory)
+        {
+            RecordAndDrawTrajectory();
+        }
     }
 
     void CollectChildComponents()
@@ -140,13 +154,7 @@ public class Witchs : MonoBehaviour
         {
             childRb.bodyType = RigidbodyType2D.Dynamic;
         }
-        /*
-        // 啟用子物件的 Collider
-        foreach (var collider in childColliders)
-        {
-            collider.enabled = true;
-        }
-        */
+
         // 啟用關節
         foreach (var joint in hingeJoints)
         {
@@ -212,11 +220,6 @@ public class Witchs : MonoBehaviour
 
             transform.position = launchPosition - direction;
 
-            if (trajectoryLine)
-            {
-                ShowTrajectory(direction * forceMultiplier);
-                trajectoryLine.enabled = true;
-            }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -236,28 +239,21 @@ public class Witchs : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;  // 允許旋轉
         rb.AddForce(launchForce, ForceMode2D.Impulse);
 
-        if (trajectoryLine)
-        {
-            trajectoryLine.enabled = false;
-        }
-
         EnableRagdoll();
+
+        // 【新增】啟動軌跡追蹤
+        trajectoryPoints.Clear();
+        isTrackingTrajectory = true;
+
+        // 如果有實際軌跡 LineRenderer，啟用它
+        if (actualTrajectoryLine)
+        {
+            actualTrajectoryLine.enabled = true;
+        }
 
         Debug.Log("發射!");
     }
 
-
-    void ShowTrajectory(Vector2 velocity)
-    {
-        Vector2 position = launchPosition;
-
-        for (int i = 0; i < trajectoryPointCount; i++)
-        {
-            float time = i * trajectoryTimeStep;
-            Vector2 point = position + velocity * time + 0.5f * Physics2D.gravity * time * time;
-            trajectoryLine.SetPosition(i, point);
-        }
-    }
 
     bool checkMouseClick()
     {
@@ -331,5 +327,30 @@ public class Witchs : MonoBehaviour
     private void playAnimation()
     {
         StartCoroutine(WaitAndDoAction());
+    }
+
+    void RecordAndDrawTrajectory()
+    {
+        // 限制每隔一段時間才記錄一個點，以避免線條過密，導致效能下降
+        if (Time.fixedTime % 0.05f < Time.fixedDeltaTime) // 例如每 0.05 秒記錄一次
+        {
+            // 記錄當前世界位置
+            trajectoryPoints.Add(transform.position);
+
+            if (actualTrajectoryLine)
+            {
+                // 更新 LineRenderer 的點數和位置
+                actualTrajectoryLine.positionCount = trajectoryPoints.Count;
+                actualTrajectoryLine.SetPositions(trajectoryPoints.ToArray());
+            }
+
+            // 【停止追蹤條件】
+            // 判斷速度是否過低（落地或停住）來停止追蹤
+            if (rb.velocity.sqrMagnitude < 0.1f && rb.IsSleeping())
+            {
+                isTrackingTrajectory = false;
+                Debug.Log("軌跡追蹤停止，女巫已靜止。");
+            }
+        }
     }
 }
